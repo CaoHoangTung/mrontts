@@ -1,0 +1,19 @@
+{
+  "patterns": [
+    {
+      "prefix": "(?<=^|\\s)",
+      "postfix": "(?=$|\\s)",
+      "pattern": "([0-9]+(\\.[0-9]+)? )(##$unit.dict$##)",
+      "group": 3
+    }
+  ],
+  "dict": {
+    "decibel": "dB",
+    "gam": "g",
+    "ghi": "GB",
+    "bai": "byte",
+    "ka": "k",
+    "mi li lít": "ml",
+    "lít": "l"
+  }
+}

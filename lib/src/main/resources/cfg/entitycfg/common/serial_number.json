@@ -1,0 +1,10 @@
+{
+  "patterns": [
+    {
+      "prefix": "",
+      "postfix": "",
+      "pattern": "(âm |trừ |dương |cộng )?((không|mốt|một|hai|hăm|ba|bốn|tư|nhăm|lăm|năm|sáu|bảy|bẩy|tám|chín)( (không|linh|lẻ|mốt|một|hai|hăm|ba|bốn|tư|nhăm|lăm|năm|sáu|bảy|bẩy|tám|chín)){7,})",
+      "group": 0
+    }
+  ]
+}

@@ -1,0 +1,34 @@
+{
+  "patterns": [
+    {
+      "prefix": "(?<=(-|√ |trừ )?[0-9] )",
+      "postfix": "(?= (-|√ |trừ )?[0-9])",
+      "pattern": "##$simple_calculation.dict$##",
+      "group": 0
+    },
+    {
+      "prefix": "(?<!-?[0-9] )",
+      "postfix": "(?=[0-9])",
+      "pattern": "trừ ",
+      "group": 0
+    }
+  ],
+  "dict": {
+    "cộng thêm với": "+",
+    "cộng thêm": "+",
+    "cộng với": "+",
+    "cộng": "+",
+    "thêm": "+",
+    "bớt": "-",
+    "trừ đi": "-",
+    "trừ cho": "-",
+    "trừ": "-",
+    "trừ ": "-",
+    "nhân với": "*",
+    "nhân": "*",
+    "lần": "*",
+    "chia cho": "/",
+    "chia": "/",
+    "mũ": "^"
+  }
+}

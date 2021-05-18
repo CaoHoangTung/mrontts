@@ -1,0 +1,15 @@
+{
+  "patterns": [
+    {
+      "prefix": "(?<=^|(?<!không|một|hai|ba|bốn|năm|sáu|bảy|tám|chín|mười|trăm|ngàn|triệu|tỉ|tỷ)(?<!##$simple_calculation.dict$##) )",
+      "postfix": "(?= (năm|tháng)(?! (mốt|một|hai|ba|bốn|tư|năm|lăm|nhăm|sáu|bảy|bẩy|tám|chín|mười|mươi|##$unit.dict$##|##$simple_calculation.dict$##)))",
+      "pattern": "(một|(hai|ba|bốn|năm|sáu|bảy|tám|chín)(( mươi)?( (mốt|hai|ba|tư|bốn|lăm|nhăm|sáu|bảy|bẩy|tám|chín))?)?|mười( một|hai|ba|bốn|năm|sáu|bảy|tám|chín)?)?",
+      "group": 0
+    }
+  ],
+  "exceptions": {
+    "negative_patterns": [],
+    "positive_exceptions": [],
+    "negative_exceptions": []
+  }
+}

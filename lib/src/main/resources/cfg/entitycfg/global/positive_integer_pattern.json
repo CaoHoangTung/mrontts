@@ -1,0 +1,6 @@
+{
+  "prefix": "",
+  "postfix": "",
+  "pattern": "(((lẻ|linh|không|mốt|một|hai|hăm|ba|bốn|tư|nhăm|lăm|năm|sáu|bảy|bẩy|tám|chín|mười)( trăm)?( lẻ| linh| không| mốt| hai| hăm| ba| tư| bốn| lăm| nhăm| sáu| bảy| bẩy| tám| chín)?(( mươi)?( mốt| hai| hăm| ba| tư| bốn| lăm| nhăm| sáu| bảy| bẩy| tám| chín)?)?)( tỉ| tỷ| triệu| nghìn| ngàn| trăm| mươi)? ?)+",
+  "group": 0
+}

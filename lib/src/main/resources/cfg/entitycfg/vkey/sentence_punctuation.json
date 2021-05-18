@@ -1,0 +1,31 @@
+{
+  "patterns": [
+    {
+      "prefix": "(?<=^| )",
+      "postfix": "(?=$)",
+      "pattern": "##$sentence_punctuation.dict$##",
+      "group": 0
+    }
+  ],
+  "dict": {
+    "phẩy": ",",
+    "phảy": ",",
+    "2 chấm xuống dòng": ":\n",
+    "2 chấm": ":",
+    "hỏi chấm": "?",
+    "chấm than": "!",
+    "chấm xuống dòng": ".\n",
+    "a còng": "@",
+    "chấm": ".",
+    "gạch ngang": "-",
+    "xuống dòng": "\n"
+  },
+  "exceptions": {
+    "negative_patterns": [],
+    "positive_exceptions": [],
+    "negative_exceptions": [
+      "phe phẩy",
+      "phe phảy"
+    ]
+  }
+}

@@ -1,0 +1,6 @@
+{
+  "prefix": "",
+  "postfix": "",
+  "pattern": "(không|một|hai|ba|bốn|năm|sáu|bảy|bẩy|tám|chín|mười)",
+  "group": 0
+}

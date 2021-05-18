@@ -1,0 +1,76 @@
+{
+  "patterns": [
+    {
+      "prefix": "(?<=[0-9])",
+      "postfix": "(?=%)",
+      "pattern": " ",
+      "group": 0
+    },
+    {
+      "prefix": "(?<=^|\\s)",
+      "postfix": "(?=[a-zA-Z](\\s|$))",
+      "pattern": "[0-9/]+( )",
+      "group": 1
+    },
+    {
+      "prefix": "(?<=^|\\s)",
+      "postfix": "(?=[0-9/]+(\\s|$))",
+      "pattern": "[a-zA-Z]( )",
+      "group": 1
+    },
+    {
+      "prefix": "(?<=[0-9])",
+      "postfix": "(?=[0-9])",
+      "pattern": " (/|,|\\.) ",
+      "group": 0
+    },
+    {
+      "prefix": "(?<=^|\\s)",
+      "postfix": "(?=[0-9])",
+      "pattern": "√ ",
+      "group": 0
+    },
+    {
+      "prefix": "(?<=(^|\\s)[a-zA-Z])",
+      "postfix": "(?=[a-zA-Z]($|\\s))",
+      "pattern": " ",
+      "group": 0
+    },
+    {
+      "prefix": "(?<=(^|\\s))",
+      "postfix": "(?=$|\\s)",
+      "pattern": "VTV( )([1-9]|1[0-6]|24)",
+      "group": 2
+    },
+    {
+      "prefix": "(?<=(^|\\s))",
+      "postfix": "(?=$|\\s)",
+      "pattern": "VTC( )[1-9]",
+      "group": 2
+    },
+    {
+      "prefix": "(?<=(^|\\s))",
+      "postfix": "(?=$|\\s)",
+      "pattern": "THVL( )[1-2]",
+      "group": 2
+    },
+    {
+      "prefix": "(?<=(^|\\s))",
+      "postfix": "(?=$|\\s)",
+      "pattern": "HTV( )[2379]",
+      "group": 2
+    },
+    {
+      "prefix": "(?<=(^|\\s))",
+      "postfix": "(?=$|\\s)",
+      "pattern": "VOV( )[1-6]",
+      "group": 2
+    }
+  ],
+  "dict": {
+    " ": "",
+    " / ": " / ",
+    " . ": ".",
+    "√ ": "√"
+  }
+}
