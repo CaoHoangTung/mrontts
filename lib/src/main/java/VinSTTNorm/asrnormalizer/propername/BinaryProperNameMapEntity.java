@@ -107,6 +107,7 @@ public class BinaryProperNameMapEntity extends BinarySetBaseEntity {
                 String[] candidate = Arrays.copyOfRange(tokens, startTokenIdx, endTokenIdx+1);
                 String candidateString = StringUtilities.join(candidate, " ");
 
+                // check for word existence using longest matching
                 if (BinaryDictionary.checkExist(binaryWordSegmentationSet, candidateString)) {
                     int stringEndIdx = stringStartIdx + candidateString.length() - 1;
 

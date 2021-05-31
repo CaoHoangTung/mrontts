@@ -79,10 +79,7 @@ public class SameDictNameMapEntity extends NameMapEntity {
 
         String[] resultSegmentedTokens = new String[segmentedTokens.size()];
         segmentedTokens.toArray(resultSegmentedTokens);
-
-        for (String token : resultSegmentedTokens) {
-            System.out.print(token + "; ");
-        }
+        // resultSegmentedTokens will be a list containing splitted tokens. Eg: {"<s>", "Bật", "điều", "hòa", "lên", "hai", "sáu", "độ", "rưỡi", "</s>"}
 
         return resultSegmentedTokens;
     }

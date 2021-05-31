@@ -4,6 +4,7 @@ import VinSTTNorm.asrnormalizer.entityobject.EntityObject;
 
 import java.io.BufferedReader;
 import java.io.FileInputStream;
+import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.*;
 import java.util.regex.Matcher;
@@ -21,10 +22,14 @@ public class Utilities {
      */
     static public String[] loadLinesFromFile(String path) {
         ArrayList<String> lines = new ArrayList<>();
-        BufferedReader bufferedReader = null;
+        BufferedReader bufferedReader;
         try {
-            bufferedReader = new BufferedReader(
-                    new InputStreamReader(new FileInputStream(path)));
+            ClassLoader classLoader = ConfigUtilities.class.getClassLoader();
+            InputStream inputStream = classLoader.getResourceAsStream(path);
+
+            InputStreamReader fileStreamReader = new InputStreamReader(inputStream, "UTF-8");
+            bufferedReader = new BufferedReader(fileStreamReader);
+
             String line = bufferedReader.readLine();
             while (line != null) {
                 lines.add(line);
@@ -151,25 +156,6 @@ public class Utilities {
         }
 
         return result;
-    }
-
-    /**
-     * Join string from tokens.
-     * Example: {"a","b","c"}," " => "a b c"
-     * @param tokens
-     * @return
-     */
-    static public String joinString(String[] tokens, String sep) {
-        StringBuilder result = new StringBuilder();
-
-        for (String token: tokens) {
-            result.append(token + sep);
-        }
-        if (result.length() >= sep.length()) {
-            result.deleteCharAt(result.length() - sep.length());
-        }
-
-        return result.toString();
     }
 
     /**

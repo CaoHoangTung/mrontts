@@ -1,4 +1,4 @@
-package VinSTTNorm.asrnormalizer.vassistant;
+package VinSTTNorm.asrnormalizer.vfast;
 
 import VinSTTNorm.asrnormalizer.abstractentity.SimpleRegexEntity;
 import org.json.JSONObject;

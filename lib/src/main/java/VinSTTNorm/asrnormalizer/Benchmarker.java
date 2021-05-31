@@ -107,8 +107,6 @@ public class Benchmarker {
                         logInfo.wer = String.valueOf(currentMinWER);
                         logInfo.status = currentSampleIsCorrect ? "PASS" : "FAIL";
 
-//                        FileLogger.getInstance().write(logInfo);
-
                         logInfo.category = null;
                         logInfo.test = null;
                         logInfo.result = null;
@@ -116,7 +114,6 @@ public class Benchmarker {
                         logInfo.wer = null;
                         logInfo.status = null;
 
-//                        FileLogger.getInstance().write(logInfo);
                     }
                 }
 
@@ -140,6 +137,17 @@ public class Benchmarker {
                 currentMinWER = wer;
             }
 
+            if (idx == lines.length-1) {
+                if (!currentSampleIsCorrect) {
+                    System.out.println(String.format("ERROR AT:\nLine: %s\nType: %s\nString: %s\nResult: %s\nPrediction: %s", idx+1, spokenFilePath, currentInput, currentResult, currentPrediction));
+                } else {
+                    correctSample++;
+                }
+                totalWER += currentMinWER;
+            }
+
+
+
             if (doLogCsv) {
                 LogInfo logInfo = new LogInfo();
                 logInfo.category = spokenFilePath.split("/")[2];
@@ -148,8 +156,6 @@ public class Benchmarker {
                 logInfo.prediction = currentPrediction;
                 logInfo.wer = String.valueOf(wer);
                 logInfo.status = currentPrediction.equals(result) ? "1" : "0";
-
-//                FileLogger.getInstance().write(logInfo);
             }
         }
 
@@ -159,5 +165,45 @@ public class Benchmarker {
         double avarageWER = totalWER / totalSample;
 
         return String.format("Total: %s ; Correct: %s ; Accuracy: %s%% ; Avg WER: %s ; Time taken: %sms", totalSample, correctSample, accuracy, avarageWER, elapsedTime);
+    }
+
+    public static void main(String[] args) {
+        Benchmarker benchmarker = new Benchmarker(new VinFastVoiceControlAsrNormalizer());
+
+        String navigationBenchmarkResult = benchmarker.evaluate("testcase/navigation/spoken", "testcase/navigation/written");
+        String navigationCustom01BenchmarkResult = benchmarker.evaluate("testcase/navigation_custom01/spoken", "testcase/navigation_custom01/written");
+        String numberBenchmarkResult = benchmarker.evaluate("testcase/numbers/spoken", "testcase/numbers/written");
+        String datetimeBenchmarkResult = benchmarker.evaluate("testcase/datetime/spoken", "testcase/datetime/written");
+        String calculationBenchmarkResult = benchmarker.evaluate("testcase/calculations/spoken", "testcase/calculations/written");
+        String appnameBenchmarkResult = benchmarker.evaluate("testcase/appname/spoken", "testcase/appname/written");
+        String websitenameBenchmarkResult = benchmarker.evaluate("testcase/websitename/spoken", "testcase/websitename/written");
+        String officialBenchmarkResult = benchmarker.evaluate("testcase/official_offline/spoken", "testcase/official_offline/written");
+        String officialBenchmarkResultv4 = benchmarker.evaluate("testcase/official_offline_v4/spoken", "testcase/official_offline_v4/written");
+        String officialBenchmarkResultvnghi = benchmarker.evaluate("testcase/official_offline_nghi/spoken", "testcase/official_offline_nghi/written");
+
+        String result = String.format("" +
+                        "Sao Official vnghi80: %s\n\n" +
+                        "Sao Official v4: %s\n\n" +
+                        "Sao Official: %s\n\n" +
+                        "Navigation: %s\n\n" +
+                        "Navigation custom 01: %s\n\n" +
+                        "Number: %s\n\n" +
+                        "Datetime: %s\n\n" +
+                        "Calculation: %s\n\n" +
+                        "Appname: %s\n\n" +
+                        "Websitename: %s",
+                officialBenchmarkResultvnghi,
+                officialBenchmarkResultv4,
+                officialBenchmarkResult,
+                navigationBenchmarkResult,
+                navigationCustom01BenchmarkResult,
+                numberBenchmarkResult,
+                datetimeBenchmarkResult,
+                calculationBenchmarkResult,
+                appnameBenchmarkResult,
+                websitenameBenchmarkResult
+        );
+        
+        System.out.println(String.format("TEST RESULT %s", result));
     }
 }

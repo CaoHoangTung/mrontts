@@ -9,7 +9,7 @@ import VinSTTNorm.asrnormalizer.personname.PersonNameEntity;
 import VinSTTNorm.asrnormalizer.personname.SpecialFullNameEntity;
 import VinSTTNorm.asrnormalizer.propername.*;
 import VinSTTNorm.asrnormalizer.stringreplacer.*;
-import VinSTTNorm.asrnormalizer.vassistant.VinFastAirConditionerNumberEntity;
+import VinSTTNorm.asrnormalizer.vfast.VinFastAirConditionerNumberEntity;
 import VinSTTNorm.speech.asr.INormalizer;
 import org.json.JSONObject;
 

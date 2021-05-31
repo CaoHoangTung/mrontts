@@ -105,18 +105,25 @@ The tool is based mainly on 2 main concepts: **Entity** and **Normalizer**. Diff
 
 ## III. Supported Normalizer
 
-Use the normalizer inside an Android application
+Use the normalizer inside a Java or Android application
 
-### a. VoiceControlNormalizer
+### a. VinFastVoiceControlNormalizer
 ```java
-VoiceControlAsrNormalizer myNormalizer = new VoiceControlAsrNormalizer(context.getApplicationContext());
+VinFastVoiceControlNormalizer myNormalizer = new VinFastVoiceControlNormalizer();
 String text = "tăng âm lượng thêm năm mươi phần trăm";
 String output = myNormalizer.normText(text); // "tăng âm lượng thêm 50%"
 ```
 
-### b. VKeyboardNormalizer
+### b. VoiceControlNormalizer
 ```java
-VkeyAsrNormalizer myNormalizer = new VkeyAsrNormalizer(context.getApplicationContext());
+VoiceControlAsrNormalizer myNormalizer = new VoiceControlAsrNormalizer();
+String text = "tăng âm lượng thêm năm mươi phần trăm";
+String output = myNormalizer.normText(text); // "tăng âm lượng thêm 50%"
+```
+
+### c. VKeyboardNormalizer
+```java
+VkeyAsrNormalizer myNormalizer = new VkeyAsrNormalizer();
 String text = "một triệu cộng hai trăm nghìn";
 String output = myNormalizer.normText(text); // "1000000 + 200000"
 ```
@@ -197,7 +204,7 @@ public class MyEntity extends BaseEntity {
 #### Step 2: Pass the new entity instance to a BaseNormalizer instance
 ```java
 // get the config object for VKeyboard
-NormalizerConfig vKeyNormalizerConfig = new VKeyNormalizerConfig(context); 
+NormalizerConfig vKeyNormalizerConfig = new VKeyNormalizerConfig(); 
 JSONObject config = vKeyNormalizerConfig.getConfig();
 
 // create the normalizer assosiated with the entity
@@ -332,8 +339,8 @@ public class MyNormalizerConfig extends BaseNormalizerConfig {
 
         // add myConfig to the global config object assiciated with key "myKey"
       this.config.put("key1", ConfigUtilities.getConfigFromFile(context, "resources/cfg/entitycfg/{folder}/myConfig1.json"));
-      this.config.put("key1", ConfigUtilities.getConfigFromFile(context, "resources/cfg/entitycfg/{folder}/myConfig2.json"));
-      this.config.put("key1", ConfigUtilities.getConfigFromFile(context, "resources/cfg/entitycfg/{folder}/myConfig3.json"));
+      this.config.put("key2", ConfigUtilities.getConfigFromFile(context, "resources/cfg/entitycfg/{folder}/myConfig2.json"));
+      this.config.put("key3", ConfigUtilities.getConfigFromFile(context, "resources/cfg/entitycfg/{folder}/myConfig3.json"));
     }
 }
 ```

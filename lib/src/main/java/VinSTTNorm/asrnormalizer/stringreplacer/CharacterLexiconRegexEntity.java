@@ -20,9 +20,9 @@ public class CharacterLexiconRegexEntity extends ReplaceRegexEntity {
     public String normEntity(String spokenFormEntityString) {
         StringBuilder result = new StringBuilder();
         String[] lexiconCharacters = spokenFormEntityString.split(" ");
-        for (String t: lexiconCharacters) {
-            System.out.print(t + " ; ");
-        }
+//        for (String t: lexiconCharacters) {
+//            System.out.print(t + " ; ");
+//        }
 
         int idx = 0;
         while (idx < lexiconCharacters.length) {
