@@ -95,7 +95,4 @@ public class TimeNormalizer extends BaseNormalizer {
 
         return normText;
     }
-
-
-
 }

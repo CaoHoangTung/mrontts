@@ -81,7 +81,6 @@ abstract public class FSTNumberExtractor extends BaseExtractor {
 
     protected String getTag(String token){
         try{
-            int tokenHash = Integer.valueOf(token);
             int tokenLength = token.length();
 
             switch (tokenLength) {
@@ -142,6 +141,7 @@ abstract public class FSTNumberExtractor extends BaseExtractor {
 
     @Override
     public SpanObject[] getSpans(String text){
+        System.out.println("GET SPANS");
         ArrayList<SpanObject> resultLeftToRight = new ArrayList<>();
         ArrayList<SpanObject> resultRightToLeft = new ArrayList<>();
 
@@ -192,7 +192,6 @@ abstract public class FSTNumberExtractor extends BaseExtractor {
                             entityToAdd = (new SpanObject(characterStart, characterEnd, this.getType(), subText, currentState));
                             nextTokenIdx = currentTokenIdx;
                             nextCharacterStart = characterEnd + 2;
-//                            System.out.println(String.format("ADD %s %s %s %s", characterStart, characterEnd, subText, this.normEntity(currentState)));
                         }
                         // else, continue the loop for the start token
                     }
@@ -220,7 +219,6 @@ abstract public class FSTNumberExtractor extends BaseExtractor {
         while (endTokenIdx >= 0) {
             characterStart = 0;
             for (int startTokenIdx = 0 ; startTokenIdx <= endTokenIdx ; startTokenIdx++) {
-//                System.out.println(String.format("CHECKING TOKEN RANGE(%s %s) of %s", startTokenIdx, endTokenIdx, tokens.length));
                 int currentIdx = startTokenIdx;
                 int prevTokenIdx = -1;
                 characterEnd = characterStart - 2;
@@ -232,7 +230,6 @@ abstract public class FSTNumberExtractor extends BaseExtractor {
                 while (currentIdx <= endTokenIdx) {
                     String currentToken = tokens[currentIdx];
 
-//                    System.out.println("  CURRENT TOKEN " + currentIdx + " " + currentToken);
                     if (prevTokenIdx != currentIdx)
                         characterEnd += currentToken.length() + 1;
                     prevTokenIdx = currentIdx;
@@ -242,8 +239,6 @@ abstract public class FSTNumberExtractor extends BaseExtractor {
                     if (nextState == null) {
                         nextState = this.fst.getNextState(currentNode, currentState, currentToken);
                     }
-//                    if (nextState != null)
-//                        System.out.println("NEXT STATE " + nextState.node.getNodeIdx());
 
                     // if next state is available, follow it
                     if (nextState != null) {
@@ -257,9 +252,6 @@ abstract public class FSTNumberExtractor extends BaseExtractor {
                     }
                 }
 
-//                System.out.println("CURRENT NODE " + currentNode);
-//                System.out.println("CURRENT IDX " + currentIdx + " " + endTokenIdx);
-
                 // if current segment is a number
                 if (currentNode.isEndState() && currentIdx == endTokenIdx+1) {
                     String[] prefixTokens = text.substring(0, characterStart).split(" ");
@@ -270,7 +262,6 @@ abstract public class FSTNumberExtractor extends BaseExtractor {
                     if (!this.isException(subText, prefixTokens, postfixTokens)) {
                         resultRightToLeft.add(new SpanObject(characterStart, characterEnd, this.getType(), subText, currentState));
                         endTokenIdx = startTokenIdx;
-//                        System.out.println(String.format("ADD %s %s %s %s", characterStart, characterEnd, subText, this.normEntity(currentState)));
                         break;
                     }
                     // else, continue the loop for the start token
@@ -318,5 +309,4 @@ abstract public class FSTNumberExtractor extends BaseExtractor {
 
         return spanStringBuilder.toString();
     }
-
 }
