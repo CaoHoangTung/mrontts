@@ -49,7 +49,6 @@ public class FSTOneTwoThreeDigitExtractor extends FSTNumberExtractor {
                 }
             }
             return result;
-
         } catch (Exception e) {
             e.printStackTrace();
             System.out.println(TAG +  "Error isException.");

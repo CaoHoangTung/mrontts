@@ -179,6 +179,8 @@ abstract public class NumberFSTEntity extends BaseEntity {
             while (currentTokenIdx < tokens.length) {
                 String currentToken = tokens[currentTokenIdx];
 
+                System.out.println("TOKEN TAG " + currentToken + " " + this.getTag(currentToken));
+
                 TraverseState nextState = this.fst.getNextState(currentNode, currentState, this.getTag(currentToken));
                 // if cannot find by tag, find by exact token
                 if (nextState == null) {
@@ -237,7 +239,6 @@ abstract public class NumberFSTEntity extends BaseEntity {
         while (endTokenIdx >= 0) {
             characterStart = 0;
             for (int startTokenIdx = 0 ; startTokenIdx <= endTokenIdx ; startTokenIdx++) {
-//                System.out.println(String.format("CHECKING TOKEN RANGE(%s %s) of %s", startTokenIdx, endTokenIdx, tokens.length));
                 int currentIdx = startTokenIdx;
                 int prevTokenIdx = -1;
                 characterEnd = characterStart - 2;
@@ -249,7 +250,6 @@ abstract public class NumberFSTEntity extends BaseEntity {
                 while (currentIdx <= endTokenIdx) {
                     String currentToken = tokens[currentIdx];
 
-//                    System.out.println("  CURRENT TOKEN " + currentIdx + " " + currentToken);
                     if (prevTokenIdx != currentIdx)
                         characterEnd += currentToken.length() + 1;
                     prevTokenIdx = currentIdx;
@@ -259,8 +259,6 @@ abstract public class NumberFSTEntity extends BaseEntity {
                     if (nextState == null) {
                         nextState = this.fst.getNextState(currentNode, currentState, currentToken);
                     }
-//                    if (nextState != null)
-//                        System.out.println("NEXT STATE " + nextState.node.getNodeIdx());
 
                     // if next state is available, follow it
                     if (nextState != null) {
@@ -274,9 +272,6 @@ abstract public class NumberFSTEntity extends BaseEntity {
                     }
                 }
 
-//                System.out.println("CURRENT NODE " + currentNode);
-//                System.out.println("CURRENT IDX " + currentIdx + " " + endTokenIdx);
-
                 // if current segment is a number
                 if (currentNode.isEndState() && currentIdx == endTokenIdx+1) {
                     String[] prefixTokens = text.substring(0, characterStart).split(" ");
@@ -287,7 +282,6 @@ abstract public class NumberFSTEntity extends BaseEntity {
                     if (!this.isException(subText, prefixTokens, postfixTokens)) {
                         resultRightToLeft.add(new EntityObject(characterStart, characterEnd, this.getType(), subText, currentState));
                         endTokenIdx = startTokenIdx;
-//                        System.out.println(String.format("ADD %s %s %s %s", characterStart, characterEnd, subText, this.normEntity(currentState)));
                         break;
                     }
                     // else, continue the loop for the start token

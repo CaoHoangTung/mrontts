@@ -18,41 +18,11 @@ import org.json.JSONObject;
 
 public class main {
     public static void main(String[] args) {
-        NormalizerConfig vinFastVoiceControlNormalizerConfig = new VinFastVoiceControlNormalizerConfig();
-        JSONObject config = vinFastVoiceControlNormalizerConfig.getConfig();
+        String text = "một triệu bốn trăm ba mươi tám ngàn ba trăm hai chín";
 
-        String text = "ngày mười chín tháng năm năm hai không hai mốt và một triệu bốn trăm ba mươi tám ngàn ba trăm hai chín";
-        ExtractorAndNorm[] terms = new ExtractorAndNorm[]{
-                new ExtractorAndNorm(new LexiconExtractor(config), new LexiconNormalizer(config)),
-                new ExtractorAndNorm(new AbbreviationExtractor(config), new AbbreviationNormalizer(config)),
-                new ExtractorAndNorm(new MonthExtractor(config), new MonthNormalizer(config)),
-                new ExtractorAndNorm(new YearExtractor(config), new YearNormalizer(config)),
-                new ExtractorAndNorm(new TimeExtractor(config), new TimeNormalizer(config)),
-                new ExtractorAndNorm(new FSTOneTwoThreeDigitExtractor(config), new FSTOneTwoThreeNumberNormalizer(config)),
-                new ExtractorAndNorm(new FSTThousandNumberExtractor(config), new FSTThousandNumberNormalizer(config)),
-                new ExtractorAndNorm(new FSTMillionNumberExtractor(config), new FSTMillionNumberNormalizer(config)),
-                new ExtractorAndNorm(new FSTBillionNumberExtractor(config), new FSTBillionNumberNormalizer(config))
-        };
+        VinFastVoiceControlAsrNormalizer normalizer = new VinFastVoiceControlAsrNormalizer();
 
-        for(ExtractorAndNorm term: terms){
-            SpanObject[] spans = term.extractor.getSpans(text);
-            term.normalizer.doAllNorm(spans);
-            for(SpanObject span : spans){
-                System.out.println(span.toString());
-            }
-            text = Utilities.replaceString(text, spans);
-        }
-        System.out.println(text);
 
-//        String text2 = "bác hồ sinh năm một chín chín tám và đếm ba hai một";
-//        FSTSerialNumberextractor numberExtractor = new FSTSerialNumberextractor(config);
-//        SpanObject[] spans = numberExtractor.getSpans(text2);
-//        for(SpanObject span : spans){
-//            System.out.println(span.toString());
-//        }
-//        VinFastVoiceControlAsrNormalizer myNormalizer = new VinFastVoiceControlAsrNormalizer();
-////        String text = "tăng âm lượng thêm năm mươi phần trăm";
-//        String output = myNormalizer.normText(text);
-//        System.out.println(output);
+        System.out.println(String.format("Input: %s\nOutput: %s", text, normalizer.normText(text)));
     }
 }

@@ -8,7 +8,6 @@ public class FSTSerialNumberNormalizer extends BaseNormalizer {
     public FSTSerialNumberNormalizer(JSONObject config) {
         super(config);
     }
-
     @Override
     public String doNorm(String spokenFormEntityString) {
         return null;

@@ -27,7 +27,6 @@ public class BaseNormalizer {
 
         EntityObject[] entities;
         entities = this.object.getEntities(text);
-        System.out.println("ALOOOOO");
         for(EntityObject entityObject: entities){
             System.out.println(entityObject);
         }
