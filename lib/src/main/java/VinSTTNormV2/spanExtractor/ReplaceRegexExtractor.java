@@ -1,46 +1,49 @@
-package VinSTTNorm.asrnormalizer.abstractentity;
+package VinSTTNormV2.spanExtractor;
 
-import VinSTTNorm.asrnormalizer.config.RegexConfig;
-import VinSTTNorm.asrnormalizer.utilities.ConfigUtilities;
+import VinSTTNormV2.config.RegexConfig;
+import VinSTTNormV2.utilities.ConfigUtilities;
 import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.LinkedHashMap;
+import java.util.List;
+import java.util.Map;
 
-abstract public class ReplaceRegexEntity extends RegexBaseEntity {
+abstract public class ReplaceRegexExtractor extends RegexBaseExtractor{
     private Map<String, String> tokenMap;
 
-    public ReplaceRegexEntity(JSONObject config) {
+    public ReplaceRegexExtractor(JSONObject config){
         super(config);
     }
 
     protected List<RegexConfig> cacheRegexConfigsArray;
     protected Map<String, String> cacheTokenMap;
 
-    public boolean isCaseSensitive() {
+    public boolean isCaseSensitive(){
         return true;
     }
 
     @Override
-    public RegexConfig[] loadRegexConfigList() {
+    public RegexConfig[] loadRegexConfigList(){
         tokenMap = new LinkedHashMap<>();
 
         RegexConfig[] regexConfigs;
 
-        try {
+        try{
             String[] keys = {this.getType()};
             JSONObject localConfig = ConfigUtilities.getConfigItem(this.getGlobalConfig(), keys);
 
             JSONArray regexConfigJSONArray = localConfig.getJSONArray("patterns");
 
             List<RegexConfig> regexConfigsArray;
-
             if (this.cacheRegexConfigsArray != null ) {
                 regexConfigsArray = this.cacheRegexConfigsArray;
                 this.tokenMap = this.cacheTokenMap;
             } else {
                 regexConfigsArray = new ArrayList<>();
-                for (int idx = 0 ; idx < regexConfigJSONArray.length() ; idx++) {
+                for (int idx = 0; idx < regexConfigJSONArray.length(); idx++){
                     JSONObject regexConfigJSON = (JSONObject) regexConfigJSONArray.get(idx);
                     RegexConfig regexConfig = ConfigUtilities.getRegexConfigFromJSONObject(regexConfigJSON);
                     this.tokenMap = ConfigUtilities.getMapFromJSONObject(localConfig.getJSONObject("dict"));
@@ -57,7 +60,6 @@ abstract public class ReplaceRegexEntity extends RegexBaseEntity {
             }
 
             regexConfigs = regexConfigsArray.toArray(new RegexConfig[regexConfigsArray.size()]);
-
         } catch (Exception e) {
             e.printStackTrace();
             System.out.println(String.format("Error loading config for %s", this.getType()));
@@ -66,16 +68,7 @@ abstract public class ReplaceRegexEntity extends RegexBaseEntity {
         return regexConfigs;
     }
 
-    @Override
-    public String normEntity(String spokenFormEntityString) {
-        if (!this.isCaseSensitive()) {
-            spokenFormEntityString = spokenFormEntityString.toLowerCase(Locale.ROOT);
-        }
-        System.out.println(tokenMap);
-        System.out.println(spokenFormEntityString);
-
-        String result = tokenMap.containsKey(spokenFormEntityString) ? tokenMap.get(spokenFormEntityString) : spokenFormEntityString;
-
-        return result;
+    public Map<String, String> getTokenMap() {
+        return tokenMap;
     }
 }

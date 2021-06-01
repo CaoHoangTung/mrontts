@@ -22,13 +22,22 @@ public class BaseNormalizer {
      * @param text
      * @return
      */
+
     public String normFullText(String text) {
 
         EntityObject[] entities;
         entities = this.object.getEntities(text);
+        System.out.println("ALOOOOO");
+        for(EntityObject entityObject: entities){
+            System.out.println(entityObject);
+        }
 
         return Utilities.replaceString(text, entities);
     }
 
+    public String normSpanText(String span) {
 
+        String normedSpan = this.object.normEntity(span);
+        return normedSpan;
+    }
 }
