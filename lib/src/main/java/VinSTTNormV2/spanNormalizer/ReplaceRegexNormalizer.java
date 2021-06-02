@@ -38,9 +38,6 @@ abstract public class ReplaceRegexNormalizer extends BaseNormalizer{
             spokenFormEntityString = spokenFormEntityString.toLowerCase(Locale.ROOT);
         }
 
-//        System.out.println(tokenMap);
-//        System.out.println(spokenFormEntityString);
-
         String result = tokenMap.containsKey(spokenFormEntityString) ? tokenMap.get(spokenFormEntityString) : spokenFormEntityString;
         return result;
     }

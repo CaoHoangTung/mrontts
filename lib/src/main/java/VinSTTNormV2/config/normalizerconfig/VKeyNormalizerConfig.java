@@ -1,4 +1,4 @@
-package VinSTTNorm.asrnormalizer.config.normalizerconfig;
+package VinSTTNormV2.config.normalizerconfig;
 
 import VinSTTNorm.asrnormalizer.utilities.ConfigUtilities;
 import VinSTTNorm.asrnormalizer.utilities.binaryencoder.BinaryDictionary;

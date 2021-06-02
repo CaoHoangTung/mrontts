@@ -89,7 +89,6 @@ public class FiniteStateTranducer {
             }
         }
         currentState += outputValueString;
-//        System.out.println(String.format("CURRENT STATE %s", currentState));
 
         return currentState;
     }
@@ -110,7 +109,6 @@ public class FiniteStateTranducer {
 
         GraphEdge pathToGo = this.getEdgePath(edges, inputTape);
         if (pathToGo != null) {
-//            System.out.println(String.format("Path to go %s", pathToGo));
             GraphNode nextNode = graphNodes.get(pathToGo.dstNodeIdx);
             String outputTape = pathToGo.outputTape;
 

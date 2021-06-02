@@ -1,17 +1,21 @@
+import VinSTTNorm.asrnormalizer.VinFastVoiceControlAsrNormalizer;
 import VinSTTNorm.asrnormalizer.config.normalizerconfig.NormalizerConfig;
 import VinSTTNorm.asrnormalizer.config.normalizerconfig.VoiceControlNormalizerConfig;
-import VinSTTNormV2.modelOuputHandler.BaseHandler;
-import VinSTTNormV2.modelOuputHandler.ExoticHandler;
-import VinSTTNormV2.modelOuputHandler.LinkHandler;
-import VinSTTNormV2.modelOuputHandler.NumberNormalizer;
+import VinSTTNormV2.config.OnlineConfig;
+import VinSTTNormV2.spanExtractor.BaseExtractor;
 import VinSTTNormV2.spanExtractor.SpanObject;
 import VinSTTNormV2.spanExtractor.exotic.AbbreviationExtractor;
 import VinSTTNormV2.spanExtractor.exotic.LexiconExtractor;
+import VinSTTNormV2.spanExtractor.number.CommonNumberExtractor;
+import VinSTTNormV2.spanExtractor.number.CommonNumberExtractor01;
+import VinSTTNormV2.spanExtractor.number.FSTSerialNumberextractor;
 import VinSTTNormV2.spanExtractor.number.date.MonthExtractor;
 import VinSTTNormV2.spanExtractor.number.date.YearExtractor;
 import VinSTTNormV2.spanExtractor.number.time.TimeExtractor;
+import VinSTTNormV2.spanNormalizer.BaseNormalizer;
 import VinSTTNormV2.spanNormalizer.exotic.AbbreviationNormalizer;
 import VinSTTNormV2.spanNormalizer.exotic.LexiconNormalizer;
+import VinSTTNormV2.spanNormalizer.number.CommonNumberNormalizer;
 import VinSTTNormV2.spanNormalizer.number.date.MonthNormalizer;
 import VinSTTNormV2.spanNormalizer.number.date.YearNormalizer;
 import VinSTTNormV2.spanNormalizer.number.time.TimeNormalizer;
@@ -22,18 +26,12 @@ import java.util.Hashtable;
 
 public class main {
     public static void main(String[] args) {
-        NormalizerConfig voiceControlNormalizerConfig = new VoiceControlNormalizerConfig();
-        JSONObject config = voiceControlNormalizerConfig.getConfig();
+        String text = "một triệu bốn trăm ba mươi tám ngàn ba trăm hai chín";
 
-        String text = "";
-        ExtractorAndNorm[] terms = new ExtractorAndNorm[]{
-//                new ExtractorAndNorm(new LexiconExtractor(config), new LexiconNormalizer(config)),
-//                new ExtractorAndNorm(new AbbreviationExtractor(config), new AbbreviationNormalizer(config)),
-//                new ExtractorAndNorm(new MonthExtractor(config), new MonthNormalizer(config)),
-                new ExtractorAndNorm(new YearExtractor(config), new YearNormalizer(config)),
-//                new ExtractorAndNorm(new TimeExtractor(config), new TimeNormalizer(config)),
+        VinFastVoiceControlAsrNormalizer normalizer = new VinFastVoiceControlAsrNormalizer();
 
 
+        System.out.println(String.format("Input: %s\nOutput: %s", text, normalizer.normText(text)));
         };
         for(ExtractorAndNorm term: terms){
             SpanObject[] spans = term.extractor.getSpans(text);

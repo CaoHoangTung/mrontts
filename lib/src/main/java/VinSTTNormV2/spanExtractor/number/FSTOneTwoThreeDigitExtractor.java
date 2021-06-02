@@ -2,25 +2,20 @@ package VinSTTNormV2.spanExtractor.number;
 
 import org.json.JSONObject;
 
-public class FSTSerialNumberextractor extends FSTNumberExtractor{
+public class FSTOneTwoThreeDigitExtractor extends FSTNumberExtractor {
+    private static String TAG = "ONE_TWO_THREE_DIGIT_NUMBER_ENTITY";
 
-    private static String TAG = "SERIAL_DIGIT_NUMBER_EXTRACTOR";
-    private final int MIN_TOKEN_COUNT = 7;
-
-    public  FSTSerialNumberextractor(JSONObject config){
+    public FSTOneTwoThreeDigitExtractor(JSONObject config) {
         super(config);
     }
 
     @Override
-    public String getNumberType(){
-        return "serial";
+    public String getNumberType() {
+        return "one_two_three_digit";
     }
 
     @Override
     public boolean isException(String spokenFormEntity, String[] contextLeft, String[] contextRight) {
-        if (spokenFormEntity.split(" ").length < MIN_TOKEN_COUNT) {
-            return true;
-        }
         try {
             boolean result = false;
 
@@ -31,6 +26,10 @@ public class FSTSerialNumberextractor extends FSTNumberExtractor{
                     if (contextLeft.length > 0 && contextLeft[contextLeft.length-1].matches("[0-9]+"))
                         return true;
                 }
+            }
+
+            if (spokenFormEntity.equals("không") || spokenFormEntity.equals("tư")) {
+                result = true;
             }
 
             for (int i = 0 ; i < this.exceptionPatternJSONArray.length() ; i++) {
@@ -48,9 +47,7 @@ public class FSTSerialNumberextractor extends FSTNumberExtractor{
                         }
                     }
                 }
-                return false;
             }
-
             return result;
         } catch (Exception e) {
             e.printStackTrace();
@@ -58,5 +55,4 @@ public class FSTSerialNumberextractor extends FSTNumberExtractor{
             return true;
         }
     }
-
 }

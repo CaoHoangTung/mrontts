@@ -81,7 +81,7 @@ abstract public class FSTNumberExtractor extends BaseExtractor {
 
     protected String getTag(String token){
         try{
-            int tokenHash = Integer.valueOf(token);
+            int tokenHash = Integer.valueOf(token); // if token is not a normalized number, throw exception and return itself
             int tokenLength = token.length();
 
             switch (tokenLength) {
@@ -140,12 +140,14 @@ abstract public class FSTNumberExtractor extends BaseExtractor {
         }
     }
 
-    @Override
-    public SpanObject[] getSpans(String text){
-        ArrayList<SpanObject> resultLeftToRight = new ArrayList<>();
-        ArrayList<SpanObject> resultRightToLeft = new ArrayList<>();
-
+    /**
+     * Get left to right FST Matching
+     * @param text
+     * @return
+     */
+    private ArrayList<SpanObject> getLeftToRightFSTMatching(String text) {
         String[] tokens = text.split(" ");
+        ArrayList<SpanObject> resultLeftToRight = new ArrayList<>();
 
         int tokenIdx = 0;
         int characterStart = 0;
@@ -192,7 +194,6 @@ abstract public class FSTNumberExtractor extends BaseExtractor {
                             entityToAdd = (new SpanObject(characterStart, characterEnd, this.getType(), subText, currentState));
                             nextTokenIdx = currentTokenIdx;
                             nextCharacterStart = characterEnd + 2;
-//                            System.out.println(String.format("ADD %s %s %s %s", characterStart, characterEnd, subText, this.normEntity(currentState)));
                         }
                         // else, continue the loop for the start token
                     }
@@ -215,13 +216,26 @@ abstract public class FSTNumberExtractor extends BaseExtractor {
             characterEnd = characterStart - 2;
         }
 
-//        RIGHT TO LEFT MATCHING
+        return resultLeftToRight;
+    }
+
+    /**
+     * Get right to left FST Matching
+     * @param text
+     * @return
+     */
+    private ArrayList<SpanObject> getRightToLeftFSTMatching(String text) {
+        String[] tokens = text.split(" ");
+        ArrayList<SpanObject> resultRightToLeft = new ArrayList<>();
+
         int endTokenIdx = tokens.length - 1;
+        int characterStart;
+        int characterEnd;
+
         while (endTokenIdx >= 0) {
             characterStart = 0;
             for (int startTokenIdx = 0 ; startTokenIdx <= endTokenIdx ; startTokenIdx++) {
-//                System.out.println(String.format("CHECKING TOKEN RANGE(%s %s) of %s", startTokenIdx, endTokenIdx, tokens.length));
-                int currentIdx = startTokenIdx;
+                int currentTokenIdx = startTokenIdx;
                 int prevTokenIdx = -1;
                 characterEnd = characterStart - 2;
 
@@ -229,39 +243,33 @@ abstract public class FSTNumberExtractor extends BaseExtractor {
                 GraphNode currentNode = this.fst.getStartNode();
 
                 // check fst
-                while (currentIdx <= endTokenIdx) {
-                    String currentToken = tokens[currentIdx];
+                while (currentTokenIdx <= endTokenIdx) {
+                    String currentToken = tokens[currentTokenIdx];
 
-//                    System.out.println("  CURRENT TOKEN " + currentIdx + " " + currentToken);
-                    if (prevTokenIdx != currentIdx)
+                    if (prevTokenIdx != currentTokenIdx)
                         characterEnd += currentToken.length() + 1;
-                    prevTokenIdx = currentIdx;
+                    prevTokenIdx = currentTokenIdx;
 
                     TraverseState nextState = this.fst.getNextState(currentNode, currentState, this.getTag(currentToken));
+
                     // if cannot find by tag, find by exact token
                     if (nextState == null) {
                         nextState = this.fst.getNextState(currentNode, currentState, currentToken);
                     }
-//                    if (nextState != null)
-//                        System.out.println("NEXT STATE " + nextState.node.getNodeIdx());
 
                     // if next state is available, follow it
                     if (nextState != null) {
                         GraphNode nextNode = nextState.node;
                         currentState = this.processState(currentToken, nextState.currentState);
                         currentNode = nextNode;
-
-                        currentIdx += nextState.positionalAction;
+                        currentTokenIdx += nextState.positionalAction;
                     } else {
                         break;
                     }
                 }
 
-//                System.out.println("CURRENT NODE " + currentNode);
-//                System.out.println("CURRENT IDX " + currentIdx + " " + endTokenIdx);
-
                 // if current segment is a number
-                if (currentNode.isEndState() && currentIdx == endTokenIdx+1) {
+                if (currentNode.isEndState() && currentTokenIdx == endTokenIdx+1) {
                     String[] prefixTokens = text.substring(0, characterStart).split(" ");
                     String[] postfixTokens = text.substring(Math.min(text.length(), characterEnd + 2)).split(" "); // postfixToken would be [token1, token2...]
                     String subText = text.substring(characterStart, characterEnd+1);
@@ -270,7 +278,6 @@ abstract public class FSTNumberExtractor extends BaseExtractor {
                     if (!this.isException(subText, prefixTokens, postfixTokens)) {
                         resultRightToLeft.add(new SpanObject(characterStart, characterEnd, this.getType(), subText, currentState));
                         endTokenIdx = startTokenIdx;
-//                        System.out.println(String.format("ADD %s %s %s %s", characterStart, characterEnd, subText, this.normEntity(currentState)));
                         break;
                     }
                     // else, continue the loop for the start token
@@ -280,7 +287,15 @@ abstract public class FSTNumberExtractor extends BaseExtractor {
             endTokenIdx--;
         }
 
-        ArrayList<SpanObject> result = this.chooseEntities(resultLeftToRight, resultRightToLeft);
+        return resultRightToLeft;
+    }
+
+    @Override
+    public SpanObject[] getSpans(String text){
+        ArrayList<SpanObject> resultLeftToRight = getLeftToRightFSTMatching(text); // get span candidates with fst left to right
+        ArrayList<SpanObject> resultRightToLeft = getRightToLeftFSTMatching(text); // get span candidates with fst right to left
+
+        ArrayList<SpanObject> result = this.chooseEntities(resultLeftToRight, resultRightToLeft); // choose spans from the 2 direction list
 
         SpanObject[] resultStringArray = new SpanObject[result.size()];
         result.toArray(resultStringArray);
@@ -318,5 +333,4 @@ abstract public class FSTNumberExtractor extends BaseExtractor {
 
         return spanStringBuilder.toString();
     }
-
 }
