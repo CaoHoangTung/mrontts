@@ -7,8 +7,8 @@ import VinSTTNormV2.spanExtractor.SpanObject;
 import VinSTTNormV2.spanExtractor.exotic.AbbreviationExtractor;
 import VinSTTNormV2.spanExtractor.exotic.LexiconExtractor;
 import VinSTTNormV2.spanExtractor.number.CommonNumberExtractor;
-import VinSTTNormV2.spanExtractor.number.CommonNumberExtractor01;
-import VinSTTNormV2.spanExtractor.number.FSTSerialNumberextractor;
+//import VinSTTNormV2.spanExtractor.number.CommonNumberExtractor01;
+//import VinSTTNormV2.spanExtractor.number.FSTSerialNumberextractor;
 import VinSTTNormV2.spanExtractor.number.date.MonthExtractor;
 import VinSTTNormV2.spanExtractor.number.date.YearExtractor;
 import VinSTTNormV2.spanExtractor.number.time.TimeExtractor;
@@ -32,16 +32,16 @@ public class main {
 
 
         System.out.println(String.format("Input: %s\nOutput: %s", text, normalizer.normText(text)));
-        };
-        for(ExtractorAndNorm term: terms){
-            SpanObject[] spans = term.extractor.getSpans(text);
-            term.normalizer.doAllNorm(spans);
-            for(SpanObject span : spans){
-                System.out.println(span.toString());
-            }
-            text = Utilities.replaceString(text, spans);
-        }
-        System.out.println(text);
+//        };
+//        for(ExtractorAndNorm term: terms){
+//            SpanObject[] spans = term.extractor.getSpans(text);
+//            term.normalizer.doAllNorm(spans);
+//            for(SpanObject span : spans){
+//                System.out.println(span.toString());
+//            }
+//            text = Utilities.replaceString(text, spans);
+//        }
+//        System.out.println(text);
 
 //        String text2 = "bác hồ sinh năm một chín chín tám và đếm ba hai một";
 //        FSTSerialNumberextractor numberExtractor = new FSTSerialNumberextractor(config);
