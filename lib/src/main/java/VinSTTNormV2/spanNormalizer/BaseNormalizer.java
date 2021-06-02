@@ -28,7 +28,13 @@ abstract public class BaseNormalizer {
 
     public void doAllNorm(SpanObject[] spans){
         for (int i = 0; i < spans.length; i++){
-            spans[i].replacement = doNorm(spans[i].text);
+            String replacement = doNorm(spans[i].text);
+            if (replacement == null || replacement.isEmpty()){
+                spans[i].replacement = spans[i].text;
+            } else {
+                spans[i].replacement = replacement;
+            }
+
         }
 //        return spans;
     }

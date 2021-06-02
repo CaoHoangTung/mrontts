@@ -3,7 +3,7 @@
     {
       "prefix": "(?<=^|\\s)",
       "postfix": "(?=$|\\s)",
-      "pattern": "(âm )?((trăm|ngàn|nghìn|triệu|tỉ|tỷ) )?###positive_integer_pattern###",
+      "pattern": "(âm )?((trăm|ngàn|nghìn|ca|triệu|tỉ|tỷ) )?###positive_integer_pattern###",
       "group": 0
     }
   ],

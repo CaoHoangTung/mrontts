@@ -47,14 +47,11 @@ public class ConfigUtilities {
 
     static public JSONObject getConfigItem(JSONObject config, String[] keys) {
         JSONObject result = config;
-        System.out.println(keys);
         try {
             for (String key : keys) {
-                System.out.println(key);
                 result = (JSONObject) result.get(key);
             }
         } catch (Exception e) {
-            System.out.println(result.toString());
             result = null;
             e.printStackTrace();
             System.out.println(TAG +  "Error getConfigItem. Keys = " + Arrays.toString(keys));

@@ -3,7 +3,7 @@
     {
       "prefix": "(?<=^|\\s)",
       "postfix": "(?=$|\\s)",
-      "pattern": "(âm )?((trăm|ngàn|nghìn|triệu|tỉ|tỷ) )?###positive_integer_pattern###",
+      "pattern": "(âm )?((trăm|ngàn|nghìn|ca|triệu|tỉ|tỷ) )?###positive_integer_pattern###",
       "group": 0
     }
   ],
@@ -285,6 +285,7 @@
           [1, "<2_digit>", "<self>||+1"],
           [1, "<3_digit>", "<self>||+1"],
           [7, "nghìn", "1000||+1"],
+          [7, "ca", "1000||+1"],
           [7, "ngàn", "1000||+1"]
         ],
         "is_end": false
@@ -293,6 +294,7 @@
         "node_id": 1,
         "edges": [
           [2, "nghìn", "000||+1"],
+          [2, "ca", "000||+1"],
           [2, "ngàn", "000||+1"]
         ],
         "is_end": false
@@ -315,6 +317,7 @@
         "node_id": 3,
         "edges": [
           [6, "nghìn", "||+0"],
+          [6, "ca", "||+0"],
           [6, "ngàn", "||+0"],
           [5, "<else>", "||+0"]
         ],

@@ -71,4 +71,12 @@ abstract public class ReplaceRegexExtractor extends RegexBaseExtractor{
     public Map<String, String> getTokenMap() {
         return tokenMap;
     }
+
+    public List<RegexConfig> getCacheRegexConfigsArray() {
+        return cacheRegexConfigsArray;
+    }
+
+    public Map<String, String> getCacheTokenMap() {
+        return cacheTokenMap;
+    }
 }

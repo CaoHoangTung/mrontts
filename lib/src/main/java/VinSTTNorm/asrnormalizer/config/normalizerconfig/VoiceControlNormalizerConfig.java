@@ -22,7 +22,7 @@ public class VoiceControlNormalizerConfig extends BaseNormalizerConfig {
             this.config.put("month", ConfigUtilities.getConfigFromFile("cfg/entitycfg/common/month.json"));
             this.config.put("year", ConfigUtilities.getConfigFromFile("cfg/entitycfg/common/year.json"));
             this.config.put("month_year_count", ConfigUtilities.getConfigFromFile("cfg/entitycfg/common/month_year_count.json"));
-            this.config.put("number", ConfigUtilities.getConfigFromFile("cfg/entitycfg/common/number.json"));
+            this.config.put("number", ConfigUtilities.getConfigFromFile("cfg/entitycfg/common/number01.json"));
             this.config.put("sqrt_calculation", ConfigUtilities.getConfigFromFile("cfg/entitycfg/common/sqrt_calculation.json"));
             this.config.put("number_punctuation", ConfigUtilities.getConfigFromFile("cfg/entitycfg/common/number_punctuation.json"));
             this.config.put("time", ConfigUtilities.getConfigFromFile("cfg/entitycfg/vassistant/time.json"));

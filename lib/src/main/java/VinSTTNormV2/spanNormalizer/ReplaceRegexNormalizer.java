@@ -12,6 +12,8 @@ import java.util.Map;
 abstract public class ReplaceRegexNormalizer extends BaseNormalizer{
 
     private Map<String, String> tokenMap;
+    protected List<RegexConfig> cacheRegexConfigArray;
+    protected Map<String, String> cacheTokenMap;
 
     abstract public ReplaceRegexExtractor getSampleExtractor(JSONObject config);
 
@@ -21,10 +23,10 @@ abstract public class ReplaceRegexNormalizer extends BaseNormalizer{
         ReplaceRegexExtractor replaceRegexExtractor = this.getSampleExtractor(config);
         replaceRegexExtractor.loadRegexConfigList();
         this.tokenMap = replaceRegexExtractor.getTokenMap();
+        this.cacheTokenMap = replaceRegexExtractor.getCacheTokenMap();
     }
 
-    protected List<RegexConfig> cacheRegexConfigArray;
-    protected Map<String, String> cacheTokenMap;
+
 
     public boolean isCaseSensitive(){
         return true;
