@@ -3,6 +3,8 @@ package VinSTTNormV2.spanNormalizer.number.date;
 import VinSTTNormV2.spanNormalizer.number.CommonNumberNormalizer;
 import org.json.JSONObject;
 
+import java.util.Locale;
+
 public class YearNormalizer extends CommonNumberNormalizer {
     private static String TAG = "YEAR_NORMALIZER";
 
@@ -12,6 +14,7 @@ public class YearNormalizer extends CommonNumberNormalizer {
 
     @Override
     public String doNorm(String spokenFormEntityString){
+        spokenFormEntityString = spokenFormEntityString.toLowerCase(Locale.ROOT);
         String normedYear = super.doNorm(spokenFormEntityString);
 
         if (normedYear.length() > 4 || normedYear.length() < 3)

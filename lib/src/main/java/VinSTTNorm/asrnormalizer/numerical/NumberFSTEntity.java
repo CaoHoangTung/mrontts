@@ -179,7 +179,7 @@ abstract public class NumberFSTEntity extends BaseEntity {
             while (currentTokenIdx < tokens.length) {
                 String currentToken = tokens[currentTokenIdx];
 
-                System.out.println("TOKEN TAG " + currentToken + " " + this.getTag(currentToken));
+//                System.out.println("TOKEN TAG " + currentToken + " " + this.getTag(currentToken));
 
                 TraverseState nextState = this.fst.getNextState(currentNode, currentState, this.getTag(currentToken));
                 // if cannot find by tag, find by exact token

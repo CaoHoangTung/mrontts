@@ -8,6 +8,7 @@ import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class ConfigUtilities {
     static public final String TAG = "CONFIG_UTILITIES";
@@ -91,8 +92,11 @@ public class ConfigUtilities {
             e.printStackTrace();
             System.out.println(TAG +  "Error converting from JSONObject to Map");
         }
-
-        return result;
+        Map<String, String> sortedResult = result.entrySet().stream()
+                .sorted((a, b) -> Integer.compare(b.getKey().length(), a.getKey().length()))
+                .collect(Collectors.toMap(Map.Entry::getKey,
+                        Map.Entry::getValue, (oldValue, newValue) -> oldValue, LinkedHashMap::new));
+        return sortedResult;
     }
 
     /**

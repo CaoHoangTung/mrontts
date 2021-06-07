@@ -3,6 +3,8 @@ package VinSTTNormV2.spanNormalizer;
 import VinSTTNormV2.spanExtractor.SpanObject;
 import org.json.JSONObject;
 
+import java.util.Locale;
+
 abstract public class BaseNormalizer {
     protected String type;
     protected JSONObject globalConfig;

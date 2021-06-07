@@ -1,6 +1,5 @@
 package VinSTTNormV2.spanExtractor.number;
 
-;
 import org.json.JSONObject;
 
 public class FSTMillionNumberExtractor extends FSTNumberExtractor{

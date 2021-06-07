@@ -25,6 +25,7 @@ public class OnlineConfig extends BaseNormalizerConfig {
             //Number
             this.config.put("serial_number", ConfigUtilities.getConfigFromFile("cfg/entitycfg/common/number/serial_number.json"));
             this.config.put("month", ConfigUtilities.getConfigFromFile("cfg/entitycfg/common/number/month.json"));
+            this.config.put("day", ConfigUtilities.getConfigFromFile("cfg/entitycfg/common/number/day.json"));
             this.config.put("year", ConfigUtilities.getConfigFromFile("cfg/entitycfg/common/number/year.json"));
             this.config.put("month_year_count", ConfigUtilities.getConfigFromFile("cfg/entitycfg/common/number/month_year_count.json"));
             this.config.put("number", ConfigUtilities.getConfigFromFile("cfg/entitycfg/common/number/number_fst.json"));

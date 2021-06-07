@@ -16,6 +16,12 @@ public class FSTMillionNumberNormalizer extends BaseNormalizer {
 
     @Override
     public void doAllNorm(SpanObject[] spans) {
+        for (SpanObject span: spans){
+            String replacement = span.replacement;
+            if (replacement.substring(replacement.length()-6, replacement.length()).equals("000000")){
+                span.replacement = replacement.substring(0, replacement.length()-6) +  " triệu";
+            }
+        }
         return;
     }
 }

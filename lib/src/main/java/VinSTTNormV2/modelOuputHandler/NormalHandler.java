@@ -5,9 +5,10 @@ import org.json.JSONObject;
 
 public class NormalHandler extends BaseHandler{
     public NormalHandler(){
-        OnlineConfig onlineConfig = new OnlineConfig();
-        JSONObject config = onlineConfig.getConfig();
-
-//        this.normalizers.add(new )
+        super();
+    }
+    @Override
+    public String normAll(String spanText){
+        return spanText;
     }
 }

@@ -102,6 +102,7 @@ abstract public class RegexBaseExtractor extends BaseExtractor {
         for (RegexConfig regexConfig : regexConfigList){
             String regexString = String.format("%s%s%s",
                     regexConfig.getPrefix(), regexConfig.getPattern(), regexConfig.getPostfix());
+//            System.out.println(regexString);
             List<SpanObject> groups = Utilities.getMatchGroups(text, regexString, this.getType(), regexConfig.getGroup());
             for (SpanObject spanObject : groups){
                 int charaterStart = spanObject.characterStart;

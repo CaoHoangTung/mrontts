@@ -5,6 +5,7 @@ import VinSTTNormV2.spanNormalizer.BaseNormalizer;
 import org.json.JSONObject;
 
 import java.util.LinkedList;
+import java.util.Locale;
 import java.util.Queue;
 
 public class TimeNormalizer extends BaseNormalizer {
@@ -16,7 +17,7 @@ public class TimeNormalizer extends BaseNormalizer {
 
     @Override
     public String doNorm(String spokenFormEntityString){
-        String[] tokens = spokenFormEntityString.split(" ");
+        String[] tokens = spokenFormEntityString.toLowerCase(Locale.ROOT).split(" ");
         Queue<String> q = new LinkedList<>();
 
         boolean isLessFlag = false,

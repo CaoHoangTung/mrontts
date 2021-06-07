@@ -7,7 +7,7 @@ import org.junit.Test;
 
 import static org.junit.Assert.assertTrue;
 
-public class VinFastVoiceControlAsrNormalizerTest {
+public class OfflineNormalizerTest {
     @Test public void test() {
         VinFastVoiceControlAsrNormalizer vinFastVoiceControlAsrNormalizer = new VinFastVoiceControlAsrNormalizer();
         System.out.println(vinFastVoiceControlAsrNormalizer.normText("một hai ba"));

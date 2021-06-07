@@ -1,7 +1,7 @@
 {
   "patterns": [
     {
-      "prefix": "(?<=năm )",
+      "prefix": "(?<=ngày )",
       "postfix": "(?=$| )",
       "pattern": "###positive_integer_pattern###",
       "group": 0

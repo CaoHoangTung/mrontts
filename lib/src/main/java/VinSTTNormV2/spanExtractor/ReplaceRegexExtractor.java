@@ -60,6 +60,7 @@ abstract public class ReplaceRegexExtractor extends RegexBaseExtractor{
             }
 
             regexConfigs = regexConfigsArray.toArray(new RegexConfig[regexConfigsArray.size()]);
+//            System.out.println(regexConfigsArray);
         } catch (Exception e) {
             e.printStackTrace();
             System.out.println(String.format("Error loading config for %s", this.getType()));

@@ -50,9 +50,10 @@ public class CharacterLexiconNormalizer extends ReplaceRegexNormalizer {
             }
 
             idx = endIdx;
+
             result.append(prediction);
         }
-        return result.toString();
+        return result.toString().trim().replaceAll("( )+", " ");
     }
 
 }
