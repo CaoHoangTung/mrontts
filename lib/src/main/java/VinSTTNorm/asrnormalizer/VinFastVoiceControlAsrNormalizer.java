@@ -1,6 +1,5 @@
 package VinSTTNorm.asrnormalizer;
 
-import VinSTTNorm.asrnormalizer.config.normalizerconfig.NormalizerConfig;
 import VinSTTNorm.asrnormalizer.config.normalizerconfig.VinFastVoiceControlNormalizerConfig;
 import VinSTTNorm.asrnormalizer.datetime.TimeEntityRegexEntity;
 import VinSTTNorm.asrnormalizer.normalizer.BaseNormalizer;
@@ -11,6 +10,9 @@ import VinSTTNorm.asrnormalizer.propername.*;
 import VinSTTNorm.asrnormalizer.stringreplacer.*;
 import VinSTTNorm.asrnormalizer.vassistant.VinFastAirConditionerNumberEntity;
 import VinSTTNorm.speech.asr.INormalizer;
+import VinSTTNormV2.OfflineNormalizer;
+import VinSTTNormV2.config.OfflineConfig;
+import VinSTTNormV2.config.normalizerconfig.NormalizerConfig;
 import org.json.JSONObject;
 
 /**
@@ -29,7 +31,7 @@ public class VinFastVoiceControlAsrNormalizer implements INormalizer {
     }
 
     private void init() {
-        NormalizerConfig vFastNormalizerConfig = new VinFastVoiceControlNormalizerConfig();
+        NormalizerConfig vFastNormalizerConfig = new OfflineConfig();
         JSONObject config = vFastNormalizerConfig.getConfig();
 
         // initiate pipeline

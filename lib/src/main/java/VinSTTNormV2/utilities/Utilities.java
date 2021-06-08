@@ -176,6 +176,7 @@ public class Utilities {
      */
     static public List<SpanObject> getMatchGroups(String text, String regexString, String type, int group) {
         List<SpanObject> result = new ArrayList<>();
+
         Pattern pattern = Pattern.compile(regexString);
         Matcher matcher = pattern.matcher(text);
 

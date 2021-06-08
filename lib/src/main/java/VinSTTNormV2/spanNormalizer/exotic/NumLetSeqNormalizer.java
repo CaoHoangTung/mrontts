@@ -14,7 +14,7 @@ public class NumLetSeqNormalizer extends BaseNormalizer {
     }
 
     @Override
-    public String doNorm(String spokenFormEntityString) {return spokenFormEntityString.toUpperCase(Locale.ROOT);
+    public String doNorm(String spokenFormEntityString) {return spokenFormEntityString.toUpperCase(Locale.ROOT).replace(" ", "");
     }
 
 }

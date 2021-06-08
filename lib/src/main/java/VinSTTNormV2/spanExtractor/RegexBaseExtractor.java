@@ -108,12 +108,11 @@ abstract public class RegexBaseExtractor extends BaseExtractor {
                 int charaterStart = spanObject.characterStart;
                 int characterEnd = spanObject.characterEnd;
                 String subText = spanObject.text;
-
                 String[] prefixTokens = text.substring(0, charaterStart).split(" ");
                 String[] postfixTokens = text.substring(Math.min(text.length(), characterEnd+2)).split(" ");
 
                 if (!this.isException(spanObject.text, prefixTokens, postfixTokens)){
-                    result.add(new SpanObject(charaterStart, characterEnd, this.getType(), subText, ""));
+                    result.add(new SpanObject(charaterStart, characterEnd, this.getType(), subText, " "));
                 }
             }
 

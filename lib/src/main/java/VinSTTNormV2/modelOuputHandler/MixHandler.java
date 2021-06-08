@@ -3,6 +3,7 @@ package VinSTTNormV2.modelOuputHandler;
 import VinSTTNormV2.spanExtractor.BaseExtractor;
 import VinSTTNormV2.spanExtractor.SpanObject;
 import VinSTTNormV2.spanExtractor.exotic.CharacterLexiconExtractor;
+import VinSTTNormV2.spanExtractor.exotic.NumLetSeqExtractor;
 import VinSTTNormV2.spanExtractor.exotic.SegmentExtractor;
 import VinSTTNormV2.spanExtractor.number.FSTBillionNumberExtractor;
 import VinSTTNormV2.spanExtractor.number.FSTMillionNumberExtractor;
@@ -16,6 +17,7 @@ import VinSTTNormV2.spanExtractor.number.special.UnitExtractor;
 import VinSTTNormV2.spanExtractor.number.time.TimeExtractor;
 import VinSTTNormV2.spanNormalizer.BaseNormalizer;
 import VinSTTNormV2.spanNormalizer.exotic.CharacterLexiconNormalizer;
+import VinSTTNormV2.spanNormalizer.exotic.NumLetSeqNormalizer;
 import VinSTTNormV2.spanNormalizer.exotic.SegmentNormalizer;
 import VinSTTNormV2.spanNormalizer.number.FSTBillionNumberNormalizer;
 import VinSTTNormV2.spanNormalizer.number.FSTMillionNumberNormalizer;
@@ -44,6 +46,10 @@ public class MixHandler extends BaseHandler{
 
                 new ExtractorAndNorm(new NumberPunctuationExtractor(config), new NumberPunctuationNormalizer(config)),
                 new ExtractorAndNorm(new UnitExtractor(config), new UnitNormalizer(config)),
+
+                new ExtractorAndNorm(new SegmentExtractor(config), new SegmentNormalizer(config))
+//
+//                new ExtractorAndNorm(new NumLetSeqExtractor(config), new NumLetSeqNormalizer(config))
 
 //                new ExtractorAndNorm(new CharacterLexiconExtractor(config), new CharacterLexiconNormalizer(config))
         };

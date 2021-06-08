@@ -2,10 +2,12 @@ package VinSTTNormV2.modelOuputHandler;
 
 import VinSTTNormV2.spanExtractor.SpanObject;
 import VinSTTNormV2.spanExtractor.exotic.CharacterLexiconExtractor;
+import VinSTTNormV2.spanExtractor.exotic.NumLetSeqExtractor;
 import VinSTTNormV2.spanExtractor.exotic.SegmentExtractor;
 import VinSTTNormV2.spanExtractor.number.*;
 import VinSTTNormV2.spanExtractor.number.special.NumberPunctuationExtractor;
 import VinSTTNormV2.spanNormalizer.exotic.CharacterLexiconNormalizer;
+import VinSTTNormV2.spanNormalizer.exotic.NumLetSeqNormalizer;
 import VinSTTNormV2.spanNormalizer.exotic.SegmentNormalizer;
 import VinSTTNormV2.spanNormalizer.number.*;
 import VinSTTNormV2.spanNormalizer.number.special.NumberPunctuationNormalizer;
@@ -22,7 +24,8 @@ public class AddressHandler extends BaseHandler{
                 new ExtractorAndNorm(new FSTThousandNumberExtractor(config), new FSTThousandNumberNormalizer(config)),
                 new ExtractorAndNorm(new NumberPunctuationExtractor(config), new NumberPunctuationNormalizer(config)),
                 new ExtractorAndNorm(new CharacterLexiconExtractor(config), new CharacterLexiconNormalizer(config)),
-                new ExtractorAndNorm(new SegmentExtractor(config), new SegmentNormalizer(config))
+                new ExtractorAndNorm(new SegmentExtractor(config), new SegmentNormalizer(config)),
+//                new ExtractorAndNorm(new NumLetSeqExtractor(config), new NumLetSeqNormalizer(config))
 
         };
 

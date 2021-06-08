@@ -8,15 +8,15 @@
     },
     {
       "prefix": "(?<=^|\\s)",
-      "postfix": "(([a-zA-Z](\\s|$))+)",
+      "postfix": "(?=[a-zA-Z](\\s|$))",
       "pattern": "[0-9/]+( )",
-      "group": 0
+      "group": 1
     },
     {
       "prefix": "(?<=^|\\s)",
-      "postfix": "([0-9/]+(\\s|$))",
+      "postfix": "(?=[0-9/]+(\\s|$))",
       "pattern": "[a-zA-Z]( )",
-      "group": 0
+      "group": 1
     },
     {
       "prefix": "(?<=[0-9])",

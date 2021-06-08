@@ -7,7 +7,7 @@ public class Main {
         INormalizer normalizer = new VinFastVoiceControlAsrNormalizer();
 
 //        String text = "ngày mười chín tháng năm năm hai không hai mốt và ba trăm hai chín";
-        String text = "một triệu bốn trăm ba mươi tám ngàn ba trăm hai chín";
+        String text = "đoạn bốn hai xéo mười bốn n mười bảy ở đâu";
 
         String output = normalizer.normText(text);
 
