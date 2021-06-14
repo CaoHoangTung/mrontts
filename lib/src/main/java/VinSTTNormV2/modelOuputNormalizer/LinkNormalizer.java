@@ -1,4 +1,4 @@
-package VinSTTNormV2.modelOuputHandler;
+package VinSTTNormV2.modelOuputNormalizer;
 
 
 import VinSTTNormV2.spanExtractor.SpanObject;
@@ -9,11 +9,11 @@ import VinSTTNormV2.utilities.Utilities;
 
 import java.util.Locale;
 
-public class LinkHandler extends BaseHandler{
+public class LinkNormalizer extends BaseOutputNormalizer {
 
     public ExtractorAndNorm[] terms;
 
-    public LinkHandler(){
+    public LinkNormalizer(){
         super();
 //        this.terms = new ExtractorAndNorm[]{
 //                new ExtractorAndNorm(new CharacterLexiconExtractor(config), new CharacterLexiconNormalizer(config)),

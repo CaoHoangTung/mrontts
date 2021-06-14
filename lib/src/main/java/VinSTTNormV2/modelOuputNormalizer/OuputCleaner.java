@@ -1,11 +1,11 @@
-package VinSTTNormV2.modelOuputHandler;
+package VinSTTNormV2.modelOuputNormalizer;
 
 import VinSTTNormV2.spanExtractor.SpanObject;
 import VinSTTNormV2.spanExtractor.exotic.SegmentExtractor;
 import VinSTTNormV2.spanNormalizer.exotic.SegmentNormalizer;
 import VinSTTNormV2.utilities.Utilities;
 
-public class OuputCleaner extends BaseHandler{
+public class OuputCleaner extends BaseOutputNormalizer {
 
     public OuputCleaner(){
         super();

@@ -11,10 +11,13 @@ import VinSTTNormV2.spanExtractor.exotic.LexiconExtractor;
 import VinSTTNormV2.spanExtractor.exotic.SegmentExtractor;
 import VinSTTNormV2.spanExtractor.link.WebsiteExtractor;
 import VinSTTNormV2.spanExtractor.number.*;
+import VinSTTNormV2.spanExtractor.number.calculations.SimpleCalculationExtractor;
+import VinSTTNormV2.spanExtractor.number.calculations.SqrtCalculationExtractor;
 import VinSTTNormV2.spanExtractor.number.date.MonthExtractor;
 import VinSTTNormV2.spanExtractor.number.date.MonthYearCountExtractor;
 import VinSTTNormV2.spanExtractor.number.date.YearExtractor;
 import VinSTTNormV2.spanExtractor.number.special.NumberPunctuationExtractor;
+import VinSTTNormV2.spanExtractor.number.special.RomanNumberExtractor;
 import VinSTTNormV2.spanExtractor.number.special.UnitExtractor;
 import VinSTTNormV2.spanExtractor.number.time.TimeExtractor;
 import VinSTTNormV2.spanExtractor.propername.SameDictNameExtractor;
@@ -25,10 +28,13 @@ import VinSTTNormV2.spanNormalizer.exotic.LexiconNormalizer;
 import VinSTTNormV2.spanNormalizer.exotic.SegmentNormalizer;
 import VinSTTNormV2.spanNormalizer.link.WebNormalizer;
 import VinSTTNormV2.spanNormalizer.number.*;
+import VinSTTNormV2.spanNormalizer.number.calculations.SimpleCalculationNormalizer;
+import VinSTTNormV2.spanNormalizer.number.calculations.SqrtCalculationNormalizer;
 import VinSTTNormV2.spanNormalizer.number.date.MonthNormalizer;
 import VinSTTNormV2.spanNormalizer.number.date.MonthYearCountNormalizer;
 import VinSTTNormV2.spanNormalizer.number.date.YearNormalizer;
 import VinSTTNormV2.spanNormalizer.number.special.NumberPunctuationNormalizer;
+import VinSTTNormV2.spanNormalizer.number.special.RomanNumberNormalizer;
 import VinSTTNormV2.spanNormalizer.number.special.UnitNormalizer;
 import VinSTTNormV2.spanNormalizer.number.time.TimeNormalizer;
 import VinSTTNormV2.spanNormalizer.propername.SameDictNameNormalizer;
@@ -71,15 +77,18 @@ public class OfflineNormalizer {
 //                new ExtractorAndNorm(new FSTMillionNumberExtractor(config), new FSTMillionNumberNormalizer(config)),
 //                new ExtractorAndNorm(new FSTBillionNumberExtractor(config), new FSTBillionNumberNormalizer(config)),
 
+                new ExtractorAndNorm(new RomanNumberExtractor(config), new RomanNumberNormalizer(config)),
+
                 new ExtractorAndNorm(new NumberPunctuationExtractor(config), new NumberPunctuationNormalizer(config)),
                 new ExtractorAndNorm(new TimeExtractor(config), new TimeNormalizer(config)),
+                new ExtractorAndNorm(new SqrtCalculationExtractor(config), new SqrtCalculationNormalizer(config)),
+                new ExtractorAndNorm(new SimpleCalculationExtractor(config), new SimpleCalculationNormalizer(config)),
+                new ExtractorAndNorm(new UnitExtractor(config), new UnitNormalizer(config)),
 
                 new ExtractorAndNorm(new CharacterLexiconExtractor(config), new CharacterLexiconNormalizer(config)),
                 new ExtractorAndNorm(new AbbreviationExtractor(config), new AbbreviationNormalizer(config)),
 
                 new ExtractorAndNorm(new SegmentExtractor(config), new SegmentNormalizer(config)),
-
-                new ExtractorAndNorm(new UnitExtractor(config), new UnitNormalizer(config)),
                 new ExtractorAndNorm(new WebsiteExtractor(config), new WebNormalizer(config))
 
         };
@@ -99,9 +108,9 @@ public class OfflineNormalizer {
         for (ExtractorAndNorm term: this.terms){
             SpanObject[] spans = term.extractor.getSpans(text);
             term.normalizer.doAllNorm(spans);
-            for(SpanObject span : spans){
-                System.out.println(span.toString());
-            }
+//            for(SpanObject span : spans){
+//                System.out.println(span.toString());
+//            }
             text = Utilities.replaceString(text, spans);
         }
 

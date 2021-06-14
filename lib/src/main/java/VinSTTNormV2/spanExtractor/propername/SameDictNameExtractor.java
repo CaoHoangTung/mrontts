@@ -78,9 +78,9 @@ public class SameDictNameExtractor extends NameMapExtractor {
         String[] resultSegmentedTokens = new String[segmentedTokens.size()];
         segmentedTokens.toArray(resultSegmentedTokens);
 
-        for (String token : resultSegmentedTokens) {
-            System.out.print(token + "; ");
-        }
+//        for (String token : resultSegmentedTokens) {
+//            System.out.print(token + "; ");
+//        }
 
         return resultSegmentedTokens;
     }

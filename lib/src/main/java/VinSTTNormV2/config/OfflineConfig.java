@@ -19,6 +19,9 @@ public class OfflineConfig extends BaseNormalizerConfig {
             this.config.put("serial_number", ConfigUtilities.getConfigFromFile("cfg/entitycfg/common/number/serial_number.json"));
             this.config.put("month", ConfigUtilities.getConfigFromFile("cfg/entitycfg/common/number/month.json"));
             this.config.put("year", ConfigUtilities.getConfigFromFile("cfg/entitycfg/common/number/year.json"));
+            this.config.put("roman_number", ConfigUtilities.getConfigFromFile("cfg/entitycfg/common/number/roman_number.json"));
+
+
             this.config.put("month_year_count", ConfigUtilities.getConfigFromFile("cfg/entitycfg/common/number/month_year_count.json"));
             this.config.put("number", ConfigUtilities.getConfigFromFile("cfg/entitycfg/common/number/number_fst.json"));
 //            this.config.put("number", ConfigUtilities.getConfigFromFile("cfg/entitycfg/common/number/number_regex.json"));
@@ -30,8 +33,10 @@ public class OfflineConfig extends BaseNormalizerConfig {
             this.config.put("abbreviation", ConfigUtilities.getConfigFromFile("cfg/entitycfg/common/text/abbreviation.json"));
             this.config.put("segment", ConfigUtilities.getConfigFromFile("cfg/entitycfg/common/text/segment_offline.json"));
             this.config.put("written_serial_number_character", ConfigUtilities.getConfigFromFile("cfg/entitycfg/common/number/written_serial_number_character.json"));
+            this.config.put("sqrt_calculation", ConfigUtilities.getConfigFromFile("cfg/entitycfg/common/number/sqrt_calculation.json"));
 
             this.config.put("output_smoothing", ConfigUtilities.getConfigFromFile("cfg/entitycfg/common/text/output_smoothing.json"));
+            this.config.put("app_name", ConfigUtilities.getConfigFromFile("cfg/entitycfg/common/propername/app_name.json"));
 
         } catch (JSONException e) {
             System.out.println("Error loading config");

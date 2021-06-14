@@ -1,4 +1,4 @@
-package VinSTTNormV2.modelOuputHandler;
+package VinSTTNormV2.modelOuputNormalizer;
 
 import VinSTTNormV2.config.OnlineConfig;
 import VinSTTNormV2.spanExtractor.BaseExtractor;
@@ -9,9 +9,8 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Locale;
 
-public class BaseHandler {
+public class BaseOutputNormalizer {
 
     class ExtractorAndNorm{
         public BaseExtractor extractor;
@@ -27,7 +26,7 @@ public class BaseHandler {
 
     List<BaseNormalizer> normalizers = new ArrayList<>();
     JSONObject config;
-    public BaseHandler(){
+    public BaseOutputNormalizer(){
         OnlineConfig onlineConfig = new OnlineConfig();
         config = onlineConfig.getConfig();
     }

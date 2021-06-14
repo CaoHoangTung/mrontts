@@ -1,4 +1,4 @@
-package VinSTTNormV2.modelOuputHandler;
+package VinSTTNormV2.modelOuputNormalizer;
 
 
 import VinSTTNormV2.spanExtractor.SpanObject;
@@ -9,17 +9,17 @@ import VinSTTNormV2.spanNormalizer.number.FSTThousandNumberNormalizer;
 import VinSTTNormV2.spanNormalizer.number.score.ScoreNormalizer;
 import VinSTTNormV2.utilities.Utilities;
 
-public class ScoreHandler extends BaseHandler{
+public class ScoreOutputNormalizer extends BaseOutputNormalizer {
 
     public ExtractorAndNorm[] terms;
-    public ScoreHandler(){
+    public ScoreOutputNormalizer(){
         super();
         this.terms = new ExtractorAndNorm[]{
                 new ExtractorAndNorm(new FSTOneTwoThreeDigitExtractor(config), new FSTOneTwoThreeNumberNormalizer(config)),
                 new ExtractorAndNorm(new FSTThousandNumberExtractor(config), new FSTThousandNumberNormalizer(config)),
         };
 
-        this.normalizers.add(new ScoreNormalizer(config));
+        this.normalizers.add(new VinSTTNormV2.spanNormalizer.number.score.ScoreNormalizer(config));
     }
 
 

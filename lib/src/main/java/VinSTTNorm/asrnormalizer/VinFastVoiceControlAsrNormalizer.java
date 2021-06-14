@@ -10,7 +10,7 @@ import VinSTTNorm.asrnormalizer.propername.*;
 import VinSTTNorm.asrnormalizer.stringreplacer.*;
 import VinSTTNorm.asrnormalizer.vassistant.VinFastAirConditionerNumberEntity;
 import VinSTTNorm.speech.asr.INormalizer;
-import VinSTTNormV2.OfflineNormalizer;
+
 import VinSTTNormV2.config.OfflineConfig;
 import VinSTTNormV2.config.normalizerconfig.NormalizerConfig;
 import org.json.JSONObject;
@@ -41,6 +41,7 @@ public class VinFastVoiceControlAsrNormalizer implements INormalizer {
                 new BaseNormalizer(new SpecialFullNameEntity(config)), // phil mickelson => Phil Mickelson
                 new BaseNormalizer(new PersonNameEntity(config)), // cao hoàng tùng => Cao Hoàng Tùng
 
+
 //                new BaseNormalizer(new BinaryProperNameMapEntity(config)),
                 new BaseNormalizer(new SameDictNameMapEntity(config)),
 
@@ -68,6 +69,7 @@ public class VinFastVoiceControlAsrNormalizer implements INormalizer {
                 new BaseNormalizer(new UnitRegexEntity(config)),  // 1 ki lô mét => 1 km
 
                 new BaseNormalizer(new WebsiteNameMapEntity(config)),  // google chấm com chấm vn => google.com.vn
+                new BaseNormalizer(new AppNameMapEntity(config)),
 
                 new BaseNormalizer(new OutputSmothingMapEntity(config)) // Đắc Lắc => Đắk Lắk
         };
