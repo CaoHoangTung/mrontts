@@ -6,7 +6,7 @@ import java.util.Hashtable;
 
 public class main {
     public static void main(String[] args) {
-        String text1 = "đặt báo thức lúc hai pi em";
+        String text1 = "bảy một năm chấm bảy một năm ";
         OfflineNormalizer normalizer = new OfflineNormalizer();
         System.out.println(String.format("Input: %s\nOutput: %s", text1, normalizer.normText(text1)));
 

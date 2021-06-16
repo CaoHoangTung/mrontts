@@ -83,12 +83,13 @@ public class OfflineNormalizer {
                 new ExtractorAndNorm(new TimeExtractor(config), new TimeNormalizer(config)),
                 new ExtractorAndNorm(new SqrtCalculationExtractor(config), new SqrtCalculationNormalizer(config)),
                 new ExtractorAndNorm(new SimpleCalculationExtractor(config), new SimpleCalculationNormalizer(config)),
-                new ExtractorAndNorm(new UnitExtractor(config), new UnitNormalizer(config)),
+
 
                 new ExtractorAndNorm(new CharacterLexiconExtractor(config), new CharacterLexiconNormalizer(config)),
                 new ExtractorAndNorm(new AbbreviationExtractor(config), new AbbreviationNormalizer(config)),
 
                 new ExtractorAndNorm(new SegmentExtractor(config), new SegmentNormalizer(config)),
+                new ExtractorAndNorm(new UnitExtractor(config), new UnitNormalizer(config)),
                 new ExtractorAndNorm(new WebsiteExtractor(config), new WebNormalizer(config))
 
         };

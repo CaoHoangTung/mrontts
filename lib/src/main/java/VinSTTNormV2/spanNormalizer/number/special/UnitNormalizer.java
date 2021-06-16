@@ -36,14 +36,14 @@ public class UnitNormalizer extends ReplaceRegexNormalizer {
         if (isNumeric(tokens[0])){
             if (tokens[tokens.length - 1].equals("rưỡi")){
                 String normedString = super.doNorm(String.join(" ", Arrays.copyOfRange(tokens, 1, tokens.length-1)));
-                return tokens[0] + ".5" + normedString;
+                return tokens[0] + ".5" + " " +  normedString;
             }
             //1 mét 50
             if (isNumeric(tokens[tokens.length-1])){
                 String normedString = super.doNorm(String.join(" ", Arrays.copyOfRange(tokens, 1, tokens.length-1)));
                 return tokens[0] + normedString + tokens[tokens.length-1];
             }
-            return tokens[0] + super.doNorm(String.join(" ", Arrays.copyOfRange(tokens, 1, tokens.length)));
+            return tokens[0] + " " + super.doNorm(String.join(" ", Arrays.copyOfRange(tokens, 1, tokens.length)));
         }
         else{
             if (isNumeric(tokens[tokens.length-1])){

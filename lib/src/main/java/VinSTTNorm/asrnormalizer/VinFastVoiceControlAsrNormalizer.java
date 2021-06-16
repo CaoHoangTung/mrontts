@@ -63,10 +63,12 @@ public class VinFastVoiceControlAsrNormalizer implements INormalizer {
                 new BaseNormalizer(new CharacterLexiconRegexEntity(config)), // a bờ cờ => ABC
                 new BaseNormalizer(new AbbreviationMapEntity(config)), // vtv => VTV
 
+                new BaseNormalizer(new UnitRegexEntity(config)),  // 1 ki lô mét => 1 km
+
                 new BaseNormalizer(new SegmentRegexEntity(config)),  // 3 % => 3% ; 3 d => 3d
                 new BaseNormalizer(new WrittenSerialNumberCharacterRegexEntity(config)),  // 11db6 => 11DB6
 
-                new BaseNormalizer(new UnitRegexEntity(config)),  // 1 ki lô mét => 1 km
+
 
                 new BaseNormalizer(new WebsiteNameMapEntity(config)),  // google chấm com chấm vn => google.com.vn
                 new BaseNormalizer(new AppNameMapEntity(config)),
