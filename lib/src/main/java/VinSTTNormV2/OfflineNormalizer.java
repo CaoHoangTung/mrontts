@@ -108,14 +108,14 @@ public class OfflineNormalizer {
         for (ExtractorAndNorm term: this.terms){
             SpanObject[] spans = term.extractor.getSpans(text);
             term.normalizer.doAllNorm(spans);
-//            for(SpanObject span : spans){
-//                System.out.println(span.toString());
-//            }
+            for(SpanObject span : spans){
+                System.out.println(span.toString());
+            }
             text = Utilities.replaceString(text, spans);
         }
 
         text = text.substring(4, text.length() - 5);
 
-        return text;
+        return text.replace("  ", " ");
     }
 }
