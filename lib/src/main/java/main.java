@@ -6,7 +6,7 @@ import java.util.Hashtable;
 
 public class main {
     public static void main(String[] args) {
-        String text1 = "bảy một năm chấm bảy một năm ";
+        String text1 = "bảy một năm chấm bảy một năm năm";
         OfflineNormalizer normalizer = new OfflineNormalizer();
         System.out.println(String.format("Input: %s\nOutput: %s", text1, normalizer.normText(text1)));
 
@@ -30,11 +30,11 @@ public class main {
 //            System.out.println(normedText);
 //        }
 
-//        Benchmarker benchmarker = new Benchmarker(normalizer);
-//        String result = benchmarker.evaluate("/home/trith/Work/STT-norm/stt-norm-java/lib/src/main/resources/testcase/calculations/spoken",
-//                                             "/home/trith/Work/STT-norm/stt-norm-java/lib/src/main/resources/testcase/calculations/written");
-//
-//        System.out.println(result);
+        Benchmarker benchmarker = new Benchmarker(normalizer);
+        String result = benchmarker.evaluate("/home/trith/Work/STT-norm/stt-norm-java/lib/src/main/resources/testcase/navigation/spoken",
+                                             "/home/trith/Work/STT-norm/stt-norm-java/lib/src/main/resources/testcase/navigation/written");
+
+        System.out.println(result);
     }
 
 }

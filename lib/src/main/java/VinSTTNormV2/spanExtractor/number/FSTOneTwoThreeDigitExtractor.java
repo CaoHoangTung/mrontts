@@ -21,9 +21,11 @@ public class FSTOneTwoThreeDigitExtractor extends FSTNumberExtractor {
 
             if (spokenFormEntity.equals("năm")) { // except case năm 2020, năm 2021, 1 năm, 10 năm...
                 if (contextRight.length > 0) {
-                    if (contextRight.length > 0 && contextRight[0].matches("[0-9]+"))
+                    if (contextRight.length > 0 && contextRight[0].matches("[0-9][0-9][0-9][0-9]?"))
                         return true;
-                    if (contextLeft.length > 0 && contextLeft[contextLeft.length-1].matches("[0-9]+"))
+                    if (contextLeft.length > 1 && contextLeft[contextLeft.length-2].equals("tháng"))
+                        return true;
+                    if (contextLeft.length > 0 && contextLeft[contextLeft.length-1].matches("[0-9][0-9]?"))
                         return true;
                 }
             }
