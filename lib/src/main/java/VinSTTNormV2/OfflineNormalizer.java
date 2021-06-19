@@ -20,7 +20,9 @@ import VinSTTNormV2.spanExtractor.number.special.NumberPunctuationExtractor;
 import VinSTTNormV2.spanExtractor.number.special.RomanNumberExtractor;
 import VinSTTNormV2.spanExtractor.number.special.UnitExtractor;
 import VinSTTNormV2.spanExtractor.number.time.TimeExtractor;
+import VinSTTNormV2.spanExtractor.propername.PersonNameExtractor;
 import VinSTTNormV2.spanExtractor.propername.SameDictNameExtractor;
+import VinSTTNormV2.spanExtractor.propername.SpecialFullNameExtractor;
 import VinSTTNormV2.spanNormalizer.BaseNormalizer;
 import VinSTTNormV2.spanNormalizer.exotic.AbbreviationNormalizer;
 import VinSTTNormV2.spanNormalizer.exotic.CharacterLexiconNormalizer;
@@ -37,7 +39,9 @@ import VinSTTNormV2.spanNormalizer.number.special.NumberPunctuationNormalizer;
 import VinSTTNormV2.spanNormalizer.number.special.RomanNumberNormalizer;
 import VinSTTNormV2.spanNormalizer.number.special.UnitNormalizer;
 import VinSTTNormV2.spanNormalizer.number.time.TimeNormalizer;
+import VinSTTNormV2.spanNormalizer.propername.PersonNameNormalizer;
 import VinSTTNormV2.spanNormalizer.propername.SameDictNameNormalizer;
+import VinSTTNormV2.spanNormalizer.propername.SpecialFullNameNormalizer;
 import VinSTTNormV2.utilities.Utilities;
 import org.json.JSONObject;
 
@@ -64,29 +68,30 @@ public class OfflineNormalizer {
         this.terms = new ExtractorAndNorm[]{
                 new ExtractorAndNorm(new LexiconExtractor(config), new LexiconNormalizer(config)),
 
+                new ExtractorAndNorm(new PersonNameExtractor(config), new PersonNameNormalizer(config)),
+                new ExtractorAndNorm(new SpecialFullNameExtractor(config), new SpecialFullNameNormalizer(config)),
                 new ExtractorAndNorm(new SameDictNameExtractor(config), new SameDictNameNormalizer(config)),
 
                 new ExtractorAndNorm(new FSTSerialNumberExtractor(config), new FSTSerialNumberNormalizer(config)),
 
                 new ExtractorAndNorm(new MonthExtractor(config), new MonthNormalizer(config)),
                 new ExtractorAndNorm(new YearExtractor(config), new YearNormalizer(config)),
-                new ExtractorAndNorm(new MonthYearCountExtractor(config), new MonthYearCountNormalizer(config)),
+//                new ExtractorAndNorm(new MonthYearCountExtractor(config), new MonthYearCountNormalizer(config)),
 
                 new ExtractorAndNorm(new FSTOneTwoThreeDigitExtractor(config), new FSTOneTwoThreeNumberNormalizer(config)),
                 new ExtractorAndNorm(new FSTThousandNumberExtractor(config), new FSTThousandNumberNormalizer(config)),
-//                new ExtractorAndNorm(new FSTMillionNumberExtractor(config), new FSTMillionNumberNormalizer(config)),
-//                new ExtractorAndNorm(new FSTBillionNumberExtractor(config), new FSTBillionNumberNormalizer(config)),
+                new ExtractorAndNorm(new FSTMillionNumberExtractor(config), new FSTMillionNumberNormalizer(config)),
+                new ExtractorAndNorm(new FSTBillionNumberExtractor(config), new FSTBillionNumberNormalizer(config)),
 
                 new ExtractorAndNorm(new RomanNumberExtractor(config), new RomanNumberNormalizer(config)),
+
+                new ExtractorAndNorm(new CharacterLexiconExtractor(config), new CharacterLexiconNormalizer(config)),
+                new ExtractorAndNorm(new AbbreviationExtractor(config), new AbbreviationNormalizer(config)),
 
                 new ExtractorAndNorm(new NumberPunctuationExtractor(config), new NumberPunctuationNormalizer(config)),
                 new ExtractorAndNorm(new TimeExtractor(config), new TimeNormalizer(config)),
                 new ExtractorAndNorm(new SqrtCalculationExtractor(config), new SqrtCalculationNormalizer(config)),
                 new ExtractorAndNorm(new SimpleCalculationExtractor(config), new SimpleCalculationNormalizer(config)),
-
-
-                new ExtractorAndNorm(new CharacterLexiconExtractor(config), new CharacterLexiconNormalizer(config)),
-                new ExtractorAndNorm(new AbbreviationExtractor(config), new AbbreviationNormalizer(config)),
 
                 new ExtractorAndNorm(new SegmentExtractor(config), new SegmentNormalizer(config)),
                 new ExtractorAndNorm(new UnitExtractor(config), new UnitNormalizer(config)),

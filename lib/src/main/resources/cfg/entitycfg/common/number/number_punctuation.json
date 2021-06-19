@@ -2,7 +2,7 @@
   "patterns": [
     {
       "prefix": "(?<=([0-9]))",
-      "postfix": "(?=([0-9]))",
+      "postfix": "(?=([0-9]|([A-Z]+[0-9])))",
       "pattern": "##$number_punctuation.dict$##",
       "group": 0
     }
@@ -18,6 +18,6 @@
     " xoẹt ": "/",
     " xuyệt ": "/",
     " kiệt ": "/",
-    " gạch ": "-",
+    " gạch ": "-"
   }
 }

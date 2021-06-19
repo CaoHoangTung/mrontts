@@ -3,7 +3,7 @@
     {
       "prefix": "(?<=^| )",
       "postfix": "(?=$| )",
-      "pattern": "##$character_lexicon.dict$##( ##$character_lexicon.dict$##){2,}",
+      "pattern": "##$character_lexicon.dict$##( ##$character_lexicon.dict$##){1,}",
       "group": 0
     },
     {

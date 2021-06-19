@@ -48,7 +48,7 @@ public class UnitNormalizer extends ReplaceRegexNormalizer {
         else{
             if (isNumeric(tokens[tokens.length-1])){
                 String normedString = super.doNorm(String.join(" ", Arrays.copyOfRange(tokens, 0, tokens.length-1)));
-                System.out.println(normedString + tokens[tokens.length-1]);
+//                System.out.println(normedString + tokens[tokens.length-1]);
                 return normedString + tokens[tokens.length-1];
             }
             return super.doNorm(spokenFormEntityString);

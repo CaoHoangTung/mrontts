@@ -49,7 +49,7 @@ public class Benchmarker {
     }
 
     public String evaluate(String spokenFilePath, String writtenFilePath) {
-        return this.evaluate(spokenFilePath, writtenFilePath, true, true, false);
+        return this.evaluate(spokenFilePath, writtenFilePath, true, true, true);
     }
 
     public String evaluate(String spokenFilePath, String writtenFilePath, boolean firstCharCaseSentitive, boolean doLogCsv, boolean caseSensitive){
@@ -114,7 +114,8 @@ public class Benchmarker {
                 result = result.toLowerCase(Locale.ROOT);
             }
             if (currentPrediction.equals(result) ||
-                    currentPrediction.replace("1", "một").equals(result) ||
+                    currentPrediction.equals(result.replace("một", "1")) ||
+                    currentPrediction.equals(result.replace(" giờ", ":00")) ||
                     currentPrediction.replace("°", "o").equals(result)){
                 currentSampleIsCorrect = true;
             }
