@@ -1,0 +1,10 @@
+{
+  "patterns": [
+    {
+      "prefix": "",
+      "postfix": "",
+      "pattern": "([0-9]+)\\sla mã",
+      "group": 0
+    }
+  ]
+}

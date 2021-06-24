@@ -71,6 +71,8 @@ abstract public class ReplaceRegexEntity extends RegexBaseEntity {
         if (!this.isCaseSensitive()) {
             spokenFormEntityString = spokenFormEntityString.toLowerCase(Locale.ROOT);
         }
+        System.out.println(tokenMap);
+        System.out.println(spokenFormEntityString);
 
         String result = tokenMap.containsKey(spokenFormEntityString) ? tokenMap.get(spokenFormEntityString) : spokenFormEntityString;
 

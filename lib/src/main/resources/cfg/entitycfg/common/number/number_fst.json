@@ -1,0 +1,656 @@
+{
+  "fst_config": {
+    "serial": [
+      {
+        "node_id": 0,
+        "edges": [
+          [0, "không", "0||+1"],
+          [0, "một", "1||+1"],
+          [0, "mốt", "1||+1"],
+          [0, "hai", "2||+1"],
+          [0, "ba", "3||+1"],
+          [0, "bốn", "4||+1"],
+          [0, "tư", "4||+1"],
+          [0, "năm", "5||+1"],
+          [0, "sáu", "6||+1"],
+          [0, "bảy", "7||+1"],
+          [0, "bẩy", "7||+1"],
+          [0, "tám", "8||+1"],
+          [0, "chín", "9||+1"]
+        ],
+        "is_end": true
+      }
+    ],
+
+    "one_two_three_digit": [
+      {
+        "node_id": 0,
+        "edges": [
+          [0, "âm", "-||+1"],
+          [1, "không", "0||+1"],
+          [1, "hai", "2||+1"],
+          [1, "hăm", "2||+1"],
+          [1, "ba", "3||+1"],
+          [1, "bốn", "4||+1"],
+          [1, "tư", "4||+1"],
+          [1, "năm", "5||+1"],
+          [1, "lăm", "5||+1"],
+          [1, "nhăm", "5||+1"],
+          [1, "sáu", "6||+1"],
+          [1, "bảy", "7||+1"],
+          [1, "bẩy", "7||+1"],
+          [1, "tám", "8||+1"],
+          [1, "chín", "9||+1"],
+          [2, "mười", "10||+1"],
+          [3, "một", "1||+1"],
+          [14, "trăm", "100||+1"]
+        ],
+        "is_end": false
+      },
+      {
+        "node_id": 1,
+        "edges": [
+          [4, "mươi", "0||+1"],
+          [8, "trăm", "00||+1"],
+          [5, "<else>", "||+0"]
+        ],
+        "is_end": true
+      },
+      {
+        "node_id": 2,
+        "edges": [
+          [4, "<else>", "||+0"]
+        ],
+        "is_end": true
+      },
+      {
+        "node_id": 3,
+        "edges": [
+          [5, "<else>", "||+0"],
+          [8, "trăm", "00||+1"]
+        ],
+        "is_end": true
+      },
+      {
+        "node_id": 4,
+        "edges": [
+          [6, "mốt", "1|<del> 1|+1"],
+          [6, "một", "1|<del> 1|+1"],
+          [6, "hăm", "2|<del> 1|+1"],
+          [6, "hai", "2|<del> 1|+1"],
+          [6, "ba", "3|<del> 1|+1"],
+          [6, "tư", "4|<del> 1|+1"],
+          [6, "bốn", "4|<del> 1|+1"],
+          [6, "nhăm", "5|<del> 1|+1"],
+          [6, "lăm", "5|<del> 1|+1"],
+          [6, "năm", "5|<del> 1|+1"],
+          [6, "sáu", "6|<del> 1|+1"],
+          [6, "bẩy", "7|<del> 1|+1"],
+          [6, "bảy", "7|<del> 1|+1"],
+          [6, "tám", "8|<del> 1|+1"],
+          [6, "chín", "9|<del> 1|+1"]
+        ],
+        "is_end": true
+      },
+      {
+        "node_id": 5,
+        "edges": [
+          [7, "không", "0||+1"],
+          [7, "linh", "0||+1"],
+          [7, "lẻ", "0||+1"],
+          [7, "mốt", "1||+1"],
+          [7, "một", "1||+1"],
+          [7, "mười", "1||+1"],
+          [7, "hăm", "2||+1"],
+          [7, "hai", "2||+1"],
+          [7, "ba", "3||+1"],
+          [7, "tư", "4||+1"],
+          [7, "bốn", "4||+1"],
+          [7, "nhăm", "5||+1"],
+          [7, "lăm", "5||+1"],
+          [7, "năm", "5||+1"],
+          [7, "sáu", "6||+1"],
+          [7, "bẩy", "7||+1"],
+          [7, "bảy", "7||+1"],
+          [7, "tám", "8||+1"],
+          [7, "chín", "9||+1"]
+        ],
+        "is_end": false
+      },
+      {
+        "node_id": 6,
+        "edges": [],
+        "is_end": true
+      },
+      {
+        "node_id": 7,
+        "edges": [
+          [5, "<else>", "||+0"],
+          [4, "mươi", "0||+1"]
+        ],
+        "is_end": true
+      },
+      {
+        "node_id": 8,
+        "edges": [
+          [9, "không", "|<del> 1|+1"],
+          [9, "linh", "|<del> 1|+1"],
+          [9, "lẻ", "|<del> 1|+1"],
+          [11, "một", "10|<del> 2|+1"],
+          [10, "mốt", "10|<del> 2|+1"],
+          [10, "mười", "10|<del> 2|+1"],
+          [11, "hăm", "20|<del> 2|+1"],
+          [11, "hai", "20|<del> 2|+1"],
+          [11, "ba", "30|<del> 2|+1"],
+          [11, "tư", "40|<del> 2|+1"],
+          [11, "bốn", "40|<del> 2|+1"],
+          [11, "nhăm", "50|<del> 2|+1"],
+          [11, "lăm", "50|<del> 2|+1"],
+          [11, "năm", "50|<del> 2|+1"],
+          [11, "sáu", "60|<del> 2|+1"],
+          [11, "bẩy", "70|<del> 2|+1"],
+          [11, "bảy", "70|<del> 2|+1"],
+          [11, "tám", "80|<del> 2|+1"],
+          [11, "chín", "90|<del> 2|+1"],
+          [13, "rưỡi", "50|<del> 2|+1"]
+        ],
+        "is_end": true
+      },
+      {
+        "node_id": 9,
+        "edges": [
+          [12, "không", "0||+1"],
+          [12, "một", "1||+1"],
+          [12, "hai", "2||+1"],
+          [12, "ba", "3||+1"],
+          [12, "tư", "4||+1"],
+          [12, "bốn", "4||+1"],
+          [12, "nhăm", "5||+1"],
+          [12, "lăm", "5||+1"],
+          [12, "năm", "5||+1"],
+          [12, "sáu", "6||+1"],
+          [12, "bẩy", "7||+1"],
+          [12, "bảy", "7||+1"],
+          [12, "tám", "8||+1"],
+          [12, "chín", "9||+1"]
+        ],
+        "is_end": false
+      },
+      {
+        "node_id": 10,
+        "edges": [
+          [13, "một", "1|<del> 1|+1"],
+          [13, "hai", "2|<del> 1|+1"],
+          [13, "ba", "3|<del> 1|+1"],
+          [13, "bốn", "4|<del> 1|+1"],
+          [13, "nhăm", "5|<del> 1|+1"],
+          [13, "lăm", "5|<del> 1|+1"],
+          [13, "năm", "5|<del> 1|+1"],
+          [13, "sáu", "6|<del> 1|+1"],
+          [13, "bẩy", "7|<del> 1|+1"],
+          [13, "bảy", "7|<del> 1|+1"],
+          [13, "tám", "8|<del> 1|+1"],
+          [13, "chín", "9|<del> 1|+1"]
+        ],
+        "is_end": true
+      },
+      {
+        "node_id": 11,
+        "edges": [
+          [4, "mươi", "||+1"],
+          [6, "mốt", "1|<del> 1|+1"],
+          [6, "một", "1|<del> 1|+1"],
+          [6, "hăm", "2|<del> 1|+1"],
+          [6, "hai", "2|<del> 1|+1"],
+          [6, "ba", "3|<del> 1|+1"],
+          [6, "tư", "4|<del> 1|+1"],
+          [6, "bốn", "4|<del> 1|+1"],
+          [6, "nhăm", "5|<del> 1|+1"],
+          [6, "lăm", "5|<del> 1|+1"],
+          [6, "năm", "5|<del> 1|+1"],
+          [6, "sáu", "6|<del> 1|+1"],
+          [6, "bẩy", "7|<del> 1|+1"],
+          [6, "bảy", "7|<del> 1|+1"],
+          [6, "tám", "8|<del> 1|+1"],
+          [6, "chín", "9|<del> 1|+1"],
+          [15, "trăm", "||+1"],
+          [12, "<else>", "||+0"]
+        ],
+        "is_end": false
+      },
+      {
+        "node_id": 12,
+        "edges": [],
+        "is_end": true
+      },
+      {
+        "node_id": 13,
+        "edges": [],
+        "is_end": true
+      },
+      {
+        "node_id": 14,
+        "edges": [
+          [9, "linh", "|<del> 1|+1"],
+          [9, "lẻ", "|<del> 1|+1"],
+          [11, "một", "10|<del> 2|+1"],
+          [10, "mốt", "10|<del> 2|+1"],
+          [10, "mười", "10|<del> 2|+1"],
+          [11, "hăm", "20|<del> 2|+1"],
+          [11, "hai", "20|<del> 2|+1"],
+          [11, "ba", "30|<del> 2|+1"],
+          [11, "tư", "40|<del> 2|+1"],
+          [11, "bốn", "40|<del> 2|+1"],
+          [11, "nhăm", "50|<del> 2|+1"],
+          [11, "lăm", "50|<del> 2|+1"],
+          [11, "năm", "50|<del> 2|+1"],
+          [11, "sáu", "60|<del> 2|+1"],
+          [11, "bẩy", "70|<del> 2|+1"],
+          [11, "bảy", "70|<del> 2|+1"],
+          [11, "tám", "80|<del> 2|+1"],
+          [11, "chín", "90|<del> 2|+1"],
+          [13, "rưỡi", "50|<del> 2|+1"]
+        ],
+        "is_end": false
+      },
+      {
+        "node_id": 15,
+        "edges": [],
+        "is_end": false
+      },
+      {
+        "node_id": 16,
+        "edges": [
+          [5, "<else>", "||+0"],
+          [4, "mươi", "0||+1"]
+        ],
+        "is_end": false
+      }
+    ],
+
+    "thousand_digit": [
+      {
+        "node_id": 0,
+        "edges": [
+          [0, "-", "-||+1"],
+          [1, "<1_digit>", "<self>||+1"],
+          [1, "<2_digit>", "<self>||+1"],
+          [1, "<3_digit>", "<self>||+1"],
+          [7, "nghìn", "1000||+1"],
+          [7, "ca", "1000||+1"],
+          [7, "ngàn", "1000||+1"]
+        ],
+        "is_end": false
+      },
+      {
+        "node_id": 1,
+        "edges": [
+          [2, "nghìn", "000||+1"],
+          [2, "ca", "000||+1"],
+          [2, "ngàn", "000||+1"]
+        ],
+        "is_end": false
+      },
+      {
+        "node_id": 2,
+        "edges": [
+          [3, "mốt", "100|<del> 3|+1"],
+          [3, "tư", "400|<del> 3|+1"],
+          [3, "rưỡi", "500|<del> 3|+1"],
+          [3, "<1_digit>", "<self>00|<del> 3|+1"],
+          [3, "<2_digit>", "0<self>|<del> 3|+1"],
+          [3, "<3_digit>", "<self>|<del> 3|+1"],
+          [4, "lẻ", "|<del> 1|+1"],
+          [4, "lẻ", "|<del> 1|+1"]
+        ],
+        "is_end": true
+      },
+      {
+        "node_id": 3,
+        "edges": [
+          [6, "nghìn", "||+0"],
+          [6, "ca", "||+0"],
+          [6, "ngàn", "||+0"],
+          [5, "<else>", "||+0"]
+        ],
+        "is_end": false
+      },
+      {
+        "node_id": 4,
+        "edges": [
+          [5, "<1_digit>", "<self>||+1"]
+        ],
+        "is_end": false
+      },
+      {
+        "node_id": 5,
+        "edges": [],
+        "is_end": true
+      },
+      {
+        "node_id": 6,
+        "edges": [],
+        "is_end": false
+      },
+      {
+        "node_id": 7,
+        "edges": [
+          [3, "mốt", "100|<del> 3|+1"],
+          [3, "tư", "400|<del> 3|+1"],
+          [3, "rưỡi", "500|<del> 3|+1"],
+          [3, "<1_digit>", "<self>00|<del> 3|+1"],
+          [3, "<2_digit>", "0<self>|<del> 3|+1"],
+          [3, "<3_digit>", "<self>|<del> 3|+1"],
+          [4, "lẻ", "|<del> 1|+1"],
+          [4, "lẻ", "|<del> 1|+1"]
+        ],
+        "is_end": false
+      }
+    ],
+
+    "million_digit": [
+      {
+        "node_id": 0,
+        "edges": [
+          [0, "-", "-||+1"],
+          [1, "<1_digit>", "<self>||+1"],
+          [1, "<2_digit>", "<self>||+1"],
+          [1, "<3_digit>", "<self>||+1"]
+        ],
+        "is_end": false
+      },
+      {
+        "node_id": 1,
+        "edges": [
+          [2, "triệu", "000000||+1"]
+        ],
+        "is_end": false
+      },
+      {
+        "node_id": 2,
+        "edges": [
+          [3, "<1_digit>", "<self>00000|<del> 6|+1"],
+          [3, "mốt", "100000|<del> 6|+1"],
+          [3, "tư", "400000|<del> 6|+1"],
+          [3, "rưỡi", "500000|<del> 6|+1"],
+          [3, "<2_digit>", "0000<self>|<del> 6|+1"],
+          [3, "<3_digit>", "<self>000|<del> 6|+1"],
+          [3, "<4_digit>", "00<self>|<del> 6|+1"],
+          [3, "<5_digit>", "0<self>|<del> 6|+1"],
+          [3, "<6_digit>", "<self>|<del> 6|+1"],
+          [4, "lẻ", "|<del> 1|+1"],
+          [4, "lẻ", "|<del> 1|+1"]
+        ],
+        "is_end": true
+      },
+      {
+        "node_id": 3,
+        "edges": [
+          [6, "triệu", "||+0"],
+          [5, "<else>", "||+0"]
+        ],
+        "is_end": false
+      },
+      {
+        "node_id": 4,
+        "edges": [
+          [5, "<1_digit>", "<self>||+1"]
+        ],
+        "is_end": false
+      },
+      {
+        "node_id": 5,
+        "edges": [],
+        "is_end": true
+      },
+      {
+        "node_id": 6,
+        "edges": [],
+        "is_end": false
+      }
+    ],
+
+    "billion_digit": [
+      {
+        "node_id": 0,
+        "edges": [
+          [0, "-", "-||+1"],
+          [1, "<1_digit>", "<self>||+1"],
+          [1, "<2_digit>", "<self>||+1"],
+          [1, "<3_digit>", "<self>||+1"]
+        ],
+        "is_end": false
+      },
+      {
+        "node_id": 1,
+        "edges": [
+          [2, "tỉ", "000000000||+1"],
+          [2, "tỷ", "000000000||+1"]
+        ],
+        "is_end": false
+      },
+      {
+        "node_id": 2,
+        "edges": [
+          [3, "<1_digit>", "<self>00000000|<del> 9|+1"],
+          [3, "mốt", "100000000|<del> 9|+1"],
+          [3, "tư", "400000000|<del> 9|+1"],
+          [3, "rưỡi", "500000000|<del> 9|+1"],
+          [3, "<2_digit>", "0000000<self>|<del> 9|+1"],
+          [3, "<3_digit>", "<self>000000|<del> 9|+1"],
+          [3, "<4_digit>", "00000<self>|<del> 9|+1"],
+          [3, "<5_digit>", "0000<self>|<del> 9|+1"],
+          [3, "<6_digit>", "000<self>|<del> 9|+1"],
+          [3, "<7_digit>", "00<self>|<del> 9|+1"],
+          [3, "<8_digit>", "0<self>|<del> 9|+1"],
+          [3, "<9_digit>", "<self>|<del> 9|+1"],
+          [4, "lẻ", "|<del> 1|+1"],
+          [4, "lẻ", "|<del> 1|+1"]
+        ],
+        "is_end": true
+      },
+      {
+        "node_id": 3,
+        "edges": [
+          [6, "tỉ", "||+0"],
+          [6, "tỷ", "||+0"],
+          [5, "<else>", "||+0"]
+        ],
+        "is_end": false
+      },
+      {
+        "node_id": 4,
+        "edges": [
+          [5, "<1_digit>", "<self>||+1"]
+        ],
+        "is_end": false
+      },
+      {
+        "node_id": 5,
+        "edges": [],
+        "is_end": true
+      },
+      {
+        "node_id": 6,
+        "edges": [],
+        "is_end": false
+      }
+    ]
+  },
+
+  "exceptions": {
+    "negative_patterns": [
+      {
+        "prefix": "^",
+        "postfix": "$",
+        "pattern": "###not_norm_single_token###",
+        "group": 0
+      }
+    ],
+    "positive_exceptions": [
+      "chia không",
+      "chia tư",
+      "chấm không",
+      "cộng không",
+      "không chia",
+      "không chấm",
+      "không cộng",
+      "không giây",
+      "không giờ",
+      "không mũ",
+      "không nhân",
+      "không phút",
+      "không phảy",
+      "không phần",
+      "không phẩy",
+      "không trừ",
+      "không độ",
+      "mũ không",
+      "mức không",
+      "nhân không",
+      "phảy không",
+      "phảy tư",
+      "phần không",
+      "phần tư",
+      "phẩy không",
+      "phẩy tư",
+      "số không",
+      "trừ không",
+      "chấm tư"
+    ],
+    "negative_exceptions": [
+      "mỗi năm một lần",
+      "một năm một lần",
+      "hai năm một lần",
+      "ba năm một lần",
+      "bốn năm một lần",
+      "năm năm một lần",
+      "sáu năm một lần",
+      "bảy năm một lần",
+      "tám năm một lần",
+      "chín năm một lần",
+      "mười năm một lần",
+      "gọi ba",
+      "điện cho ba",
+      "điện ba",
+      "liên hệ của ba",
+      "liên hệ ba",
+      "anh ba",
+      "anh bảy",
+      "anh hai",
+      "anh năm",
+      "anh sáu",
+      "anh tám",
+      "ba chìm",
+      "ba má",
+      "ba mẹ",
+      "ba sa",
+      "bác ba",
+      "bác bảy",
+      "bác hai",
+      "bác năm",
+      "bác sáu",
+      "bác tám",
+      "bóng bẩy",
+      "bóng bẩy",
+      "bảy nổi",
+      "chín chắn",
+      "chín lênh đênh",
+      "chín tới",
+      "chú ba",
+      "chú bảy",
+      "chú hai",
+      "chú năm",
+      "chú sáu",
+      "chú tám",
+      "chị ba",
+      "chị bảy",
+      "chị hai",
+      "chị năm",
+      "chị sáu",
+      "chị tám",
+      "con ba ba",
+      "cuối năm",
+      "các năm",
+      "cô ba",
+      "cô bảy",
+      "cô hai",
+      "cô năm",
+      "cô sáu",
+      "cô tám",
+      "cậu ba",
+      "cậu bảy",
+      "cậu hai",
+      "cậu năm",
+      "cậu sáu",
+      "cậu tám",
+      "dì ba",
+      "dì bảy",
+      "dì hai",
+      "dì năm",
+      "dì sáu",
+      "dì tám",
+      "gạo tám",
+      "gọi ba",
+      "gọi cho ba",
+      "hàng năm",
+      "không một ai",
+      "không một giây phút",
+      "lâu năm",
+      "mười mươi",
+      "mỗi năm",
+      "một ai",
+      "một chút",
+      "một chốc",
+      "một lát",
+      "một lúc",
+      "một số",
+      "một thế",
+      "một thể",
+      "một thời",
+      "một tí",
+      "một tẹo",
+      "một ít",
+      "một điều",
+      "mợ ba",
+      "mợ bảy",
+      "mợ hai",
+      "mợ năm",
+      "mợ sáu",
+      "mợ tám",
+      "nhiều năm",
+      "những năm",
+      "năm kia",
+      "năm nay",
+      "năm sau",
+      "năm trước",
+      "năm tới",
+      "năm ngoái",
+      "năm nhuận",
+      "năm xưa",
+      "năm vừa rồi",
+      "năm châu",
+      "nước ba tư",
+      "nấu chín",
+      "thứ ba",
+      "thứ bảy",
+      "thứ bẩy",
+      "thứ hai",
+      "thứ năm",
+      "thứ sáu",
+      "thứ tư",
+      "tám chuyện",
+      "vài năm",
+      "ông ba",
+      "ông bảy",
+      "ông hai",
+      "ông năm",
+      "ông sáu",
+      "ông tám",
+      "đòn bẩy",
+      "đòn bảy",
+      "đầu năm",
+      "không biết"
+    ]
+  }
+}

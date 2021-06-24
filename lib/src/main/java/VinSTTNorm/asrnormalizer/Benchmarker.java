@@ -4,6 +4,8 @@ import VinSTTNorm.asrnormalizer.utilities.LogInfo;
 import VinSTTNorm.asrnormalizer.utilities.Utilities;
 import VinSTTNorm.speech.asr.INormalizer;
 
+import java.util.Locale;
+
 public class Benchmarker {
     INormalizer normalizer;
 
@@ -127,6 +129,9 @@ public class Benchmarker {
             }
 
             currentResult += result + " | ";
+
+            currentPrediction = currentPrediction.toLowerCase(Locale.ROOT);
+            result = result.toLowerCase(Locale.ROOT);
 
             if (currentPrediction.equals(result)) {
                 currentSampleIsCorrect = true;

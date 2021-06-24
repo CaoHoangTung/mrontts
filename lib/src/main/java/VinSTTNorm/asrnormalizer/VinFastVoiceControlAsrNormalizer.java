@@ -1,7 +1,5 @@
 package VinSTTNorm.asrnormalizer;
 
-import VinSTTNorm.asrnormalizer.config.normalizerconfig.NormalizerConfig;
-import VinSTTNorm.asrnormalizer.config.normalizerconfig.VinFastVoiceControlNormalizerConfig;
 import VinSTTNorm.asrnormalizer.datetime.TimeEntityRegexEntity;
 import VinSTTNorm.asrnormalizer.normalizer.BaseNormalizer;
 import VinSTTNorm.asrnormalizer.numerical.*;
@@ -11,6 +9,9 @@ import VinSTTNorm.asrnormalizer.propername.*;
 import VinSTTNorm.asrnormalizer.stringreplacer.*;
 import VinSTTNorm.asrnormalizer.vfast.VinFastAirConditionerNumberEntity;
 import VinSTTNorm.speech.asr.INormalizer;
+
+import VinSTTNormV2.config.OfflineConfig;
+import VinSTTNormV2.config.NormalizerConfig;
 import org.json.JSONObject;
 
 /**
@@ -29,7 +30,7 @@ public class VinFastVoiceControlAsrNormalizer implements INormalizer {
     }
 
     private void init() {
-        NormalizerConfig vFastNormalizerConfig = new VinFastVoiceControlNormalizerConfig();
+        NormalizerConfig vFastNormalizerConfig = new OfflineConfig();
         JSONObject config = vFastNormalizerConfig.getConfig();
 
         // initiate pipeline
@@ -38,6 +39,7 @@ public class VinFastVoiceControlAsrNormalizer implements INormalizer {
 
                 new BaseNormalizer(new SpecialFullNameEntity(config)), // phil mickelson => Phil Mickelson
                 new BaseNormalizer(new PersonNameEntity(config)), // cao hoàng tùng => Cao Hoàng Tùng
+
 
 //                new BaseNormalizer(new BinaryProperNameMapEntity(config)),
                 new BaseNormalizer(new SameDictNameMapEntity(config)),
@@ -60,12 +62,15 @@ public class VinFastVoiceControlAsrNormalizer implements INormalizer {
                 new BaseNormalizer(new CharacterLexiconRegexEntity(config)), // a bờ cờ => ABC
                 new BaseNormalizer(new AbbreviationMapEntity(config)), // vtv => VTV
 
+                new BaseNormalizer(new UnitRegexEntity(config)),  // 1 ki lô mét => 1 km
+
                 new BaseNormalizer(new SegmentRegexEntity(config)),  // 3 % => 3% ; 3 d => 3d
                 new BaseNormalizer(new WrittenSerialNumberCharacterRegexEntity(config)),  // 11db6 => 11DB6
 
-                new BaseNormalizer(new UnitRegexEntity(config)),  // 1 ki lô mét => 1 km
+
 
                 new BaseNormalizer(new WebsiteNameMapEntity(config)),  // google chấm com chấm vn => google.com.vn
+                new BaseNormalizer(new AppNameMapEntity(config)),
 
                 new BaseNormalizer(new OutputSmothingMapEntity(config)) // Đắc Lắc => Đắk Lắk
         };
