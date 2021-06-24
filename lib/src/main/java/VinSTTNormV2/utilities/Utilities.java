@@ -1,6 +1,6 @@
 package VinSTTNormV2.utilities;
 
-import VinSTTNormV2.spanExtractor.SpanObject;
+import VinSTTNormV2.taggers.SpanObject;
 
 import java.io.BufferedReader;
 import java.io.FileInputStream;

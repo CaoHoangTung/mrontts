@@ -1,12 +1,4 @@
 {
-  "patterns": [
-    {
-      "prefix": "(?<=^|\\s)",
-      "postfix": "(?=$|\\s)",
-      "pattern": "(âm )?((trăm|ngàn|nghìn|ca|triệu|tỉ|tỷ) )?###positive_integer_pattern###",
-      "group": 0
-    }
-  ],
   "fst_config": {
     "serial": [
       {

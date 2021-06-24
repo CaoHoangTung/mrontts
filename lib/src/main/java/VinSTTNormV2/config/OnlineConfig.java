@@ -2,15 +2,25 @@ package VinSTTNormV2.config;
 
 import VinSTTNorm.asrnormalizer.config.normalizerconfig.BaseNormalizerConfig;
 import VinSTTNorm.asrnormalizer.utilities.ConfigUtilities;
+import VinSTTNorm.asrnormalizer.utilities.binaryencoder.BinaryDictionary;
 import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.HashMap;
 import java.util.Set;
 
 public class OnlineConfig extends BaseNormalizerConfig {
     public OnlineConfig() {
+        this.config = new JSONObject();
         try {
-            HashMap<String, Set<Integer>> binaryProperNameDict = new HashMap<>();
+            HashMap<String, Set<Integer>> binaryWordSegmentationDict = new HashMap<>();
+            binaryWordSegmentationDict.put("word_list", BinaryDictionary.getWords("cfg/entitycfg/global/word_segmentation.bin"));
+            this.config.put("word_segmentation", new JSONObject(binaryWordSegmentationDict));
+
+            this.config.put("not_norm_single_token", ConfigUtilities.getConfigFromFile("cfg/entitycfg/global/not_norm_single_token.json"));
+            this.config.put("single_number_token", ConfigUtilities.getConfigFromFile("cfg/entitycfg/global/single_number_token.json"));
+            this.config.put("positive_integer_pattern", ConfigUtilities.getConfigFromFile("cfg/entitycfg/global/positive_integer_pattern.json"));
+            this.config.put("simple_calculation", ConfigUtilities.getConfigFromFile("cfg/entitycfg/global/simple_calculation.json"));
 
             //Exotic
             this.config.put("lexicon", ConfigUtilities.getConfigFromFile("cfg/entitycfg/common/text/lexicon.json"));

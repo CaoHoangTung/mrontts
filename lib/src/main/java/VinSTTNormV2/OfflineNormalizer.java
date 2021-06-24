@@ -1,47 +1,42 @@
 package VinSTTNormV2;
 
+import VinSTTNormV2.config.NormalizerConfig;
 import VinSTTNormV2.config.OfflineConfig;
-import VinSTTNormV2.config.normalizerconfig.BaseNormalizerConfig;
-import VinSTTNormV2.config.normalizerconfig.VinFastVoiceControlNormalizerConfig;
-import VinSTTNormV2.spanExtractor.BaseExtractor;
-import VinSTTNormV2.spanExtractor.SpanObject;
-import VinSTTNormV2.spanExtractor.exotic.AbbreviationExtractor;
-import VinSTTNormV2.spanExtractor.exotic.CharacterLexiconExtractor;
-import VinSTTNormV2.spanExtractor.exotic.LexiconExtractor;
-import VinSTTNormV2.spanExtractor.exotic.SegmentExtractor;
-import VinSTTNormV2.spanExtractor.link.WebsiteExtractor;
-import VinSTTNormV2.spanExtractor.number.*;
-import VinSTTNormV2.spanExtractor.number.calculations.SimpleCalculationExtractor;
-import VinSTTNormV2.spanExtractor.number.calculations.SqrtCalculationExtractor;
-import VinSTTNormV2.spanExtractor.number.date.MonthExtractor;
-import VinSTTNormV2.spanExtractor.number.date.MonthYearCountExtractor;
-import VinSTTNormV2.spanExtractor.number.date.YearExtractor;
-import VinSTTNormV2.spanExtractor.number.special.NumberPunctuationExtractor;
-import VinSTTNormV2.spanExtractor.number.special.RomanNumberExtractor;
-import VinSTTNormV2.spanExtractor.number.special.UnitExtractor;
-import VinSTTNormV2.spanExtractor.number.time.TimeExtractor;
-import VinSTTNormV2.spanExtractor.propername.PersonNameExtractor;
-import VinSTTNormV2.spanExtractor.propername.SameDictNameExtractor;
-import VinSTTNormV2.spanExtractor.propername.SpecialFullNameExtractor;
-import VinSTTNormV2.spanNormalizer.BaseNormalizer;
-import VinSTTNormV2.spanNormalizer.exotic.AbbreviationNormalizer;
-import VinSTTNormV2.spanNormalizer.exotic.CharacterLexiconNormalizer;
-import VinSTTNormV2.spanNormalizer.exotic.LexiconNormalizer;
-import VinSTTNormV2.spanNormalizer.exotic.SegmentNormalizer;
-import VinSTTNormV2.spanNormalizer.link.WebNormalizer;
-import VinSTTNormV2.spanNormalizer.number.*;
-import VinSTTNormV2.spanNormalizer.number.calculations.SimpleCalculationNormalizer;
-import VinSTTNormV2.spanNormalizer.number.calculations.SqrtCalculationNormalizer;
-import VinSTTNormV2.spanNormalizer.number.date.MonthNormalizer;
-import VinSTTNormV2.spanNormalizer.number.date.MonthYearCountNormalizer;
-import VinSTTNormV2.spanNormalizer.number.date.YearNormalizer;
-import VinSTTNormV2.spanNormalizer.number.special.NumberPunctuationNormalizer;
-import VinSTTNormV2.spanNormalizer.number.special.RomanNumberNormalizer;
-import VinSTTNormV2.spanNormalizer.number.special.UnitNormalizer;
-import VinSTTNormV2.spanNormalizer.number.time.TimeNormalizer;
-import VinSTTNormV2.spanNormalizer.propername.PersonNameNormalizer;
-import VinSTTNormV2.spanNormalizer.propername.SameDictNameNormalizer;
-import VinSTTNormV2.spanNormalizer.propername.SpecialFullNameNormalizer;
+import VinSTTNormV2.taggers.BaseTagger;
+import VinSTTNormV2.taggers.SpanObject;
+import VinSTTNormV2.taggers.exotic.AbbreviationTagger;
+import VinSTTNormV2.taggers.exotic.CharacterLexiconTagger;
+import VinSTTNormV2.taggers.exotic.LexiconTagger;
+import VinSTTNormV2.taggers.exotic.SegmentTagger;
+import VinSTTNormV2.taggers.link.WebsiteTagger;
+import VinSTTNormV2.taggers.number.*;
+import VinSTTNormV2.taggers.number.calculations.SimpleCalculationTagger;
+import VinSTTNormV2.taggers.number.calculations.SqrtCalculationTagger;
+import VinSTTNormV2.taggers.number.date.MonthTagger;
+import VinSTTNormV2.taggers.number.date.YearTagger;
+import VinSTTNormV2.taggers.number.special.NumberPunctuationTagger;
+import VinSTTNormV2.taggers.number.special.RomanNumberTagger;
+import VinSTTNormV2.taggers.number.special.UnitTagger;
+import VinSTTNormV2.taggers.number.time.TimeTagger;
+import VinSTTNormV2.taggers.propername.PersonNameTagger;
+import VinSTTNormV2.taggers.propername.SameDictNameTagger;
+import VinSTTNormV2.verbalizers.BaseVerbalizer;
+import VinSTTNormV2.verbalizers.exotic.AbbreviationVerbalizer;
+import VinSTTNormV2.verbalizers.exotic.CharacterLexiconVerbalizer;
+import VinSTTNormV2.verbalizers.exotic.LexiconVerbalizer;
+import VinSTTNormV2.verbalizers.exotic.SegmentVerbalizer;
+import VinSTTNormV2.verbalizers.link.WebVerbalizer;
+import VinSTTNormV2.verbalizers.number.*;
+import VinSTTNormV2.verbalizers.number.calculations.SimpleCalculationVerbalizer;
+import VinSTTNormV2.verbalizers.number.calculations.SqrtCalculationVerbalizer;
+import VinSTTNormV2.verbalizers.number.date.MonthVerbalizer;
+import VinSTTNormV2.verbalizers.number.date.YearVerbalizer;
+import VinSTTNormV2.verbalizers.number.special.NumberPunctuationVerbalizer;
+import VinSTTNormV2.verbalizers.number.special.RomanNumberVerbalizer;
+import VinSTTNormV2.verbalizers.number.special.UnitVerbalizer;
+import VinSTTNormV2.verbalizers.number.time.TimeVerbalizer;
+import VinSTTNormV2.verbalizers.propername.PersonNameVerbalizer;
+import VinSTTNormV2.verbalizers.propername.SameDictNameVerbalizer;
 import VinSTTNormV2.utilities.Utilities;
 import org.json.JSONObject;
 
@@ -51,10 +46,10 @@ import org.json.JSONObject;
 public class OfflineNormalizer {
 
     class ExtractorAndNorm{
-        public BaseExtractor extractor;
-        public BaseNormalizer normalizer;
+        public BaseTagger extractor;
+        public BaseVerbalizer normalizer;
 
-        public ExtractorAndNorm(BaseExtractor extractor, BaseNormalizer normalizer){
+        public ExtractorAndNorm(BaseTagger extractor, BaseVerbalizer normalizer){
             this.extractor = extractor;
             this.normalizer = normalizer;
         }
@@ -63,39 +58,39 @@ public class OfflineNormalizer {
     ExtractorAndNorm[] terms;
 
     public OfflineNormalizer() {
-        BaseNormalizerConfig offlineConfig = new OfflineConfig();
+        NormalizerConfig offlineConfig = new OfflineConfig();
         JSONObject config = offlineConfig.getConfig();
         this.terms = new ExtractorAndNorm[]{
-                new ExtractorAndNorm(new LexiconExtractor(config), new LexiconNormalizer(config)),
+                new ExtractorAndNorm(new LexiconTagger(config), new LexiconVerbalizer(config)),
 
-                new ExtractorAndNorm(new PersonNameExtractor(config), new PersonNameNormalizer(config)),
-                new ExtractorAndNorm(new SpecialFullNameExtractor(config), new SpecialFullNameNormalizer(config)),
-                new ExtractorAndNorm(new SameDictNameExtractor(config), new SameDictNameNormalizer(config)),
+                new ExtractorAndNorm(new PersonNameTagger(config), new PersonNameVerbalizer(config)),
+//                new ExtractorAndNorm(new SpecialFullNameExtractor(config), new SpecialFullNameNormalizer(config)),
+                new ExtractorAndNorm(new SameDictNameTagger(config), new SameDictNameVerbalizer(config)),
 
-                new ExtractorAndNorm(new FSTSerialNumberExtractor(config), new FSTSerialNumberNormalizer(config)),
+                new ExtractorAndNorm(new FSTSerialNumberTagger(config), new FSTSerialNumberVerbalizer(config)),
 
-                new ExtractorAndNorm(new MonthExtractor(config), new MonthNormalizer(config)),
-                new ExtractorAndNorm(new YearExtractor(config), new YearNormalizer(config)),
+                new ExtractorAndNorm(new MonthTagger(config), new MonthVerbalizer(config)),
+                new ExtractorAndNorm(new YearTagger(config), new YearVerbalizer(config)),
 //                new ExtractorAndNorm(new MonthYearCountExtractor(config), new MonthYearCountNormalizer(config)),
 
-                new ExtractorAndNorm(new FSTOneTwoThreeDigitExtractor(config), new FSTOneTwoThreeNumberNormalizer(config)),
-                new ExtractorAndNorm(new FSTThousandNumberExtractor(config), new FSTThousandNumberNormalizer(config)),
-                new ExtractorAndNorm(new FSTMillionNumberExtractor(config), new FSTMillionNumberNormalizer(config)),
-                new ExtractorAndNorm(new FSTBillionNumberExtractor(config), new FSTBillionNumberNormalizer(config)),
+                new ExtractorAndNorm(new FSTOneTwoThreeDigitTagger(config), new FSTOneTwoThreeNumberVerbalizer(config)),
+                new ExtractorAndNorm(new FSTThousandNumberTagger(config), new FSTThousandNumberVerbalizer(config)),
+                new ExtractorAndNorm(new FSTMillionNumberTagger(config), new FSTMillionNumberVerbalizer(config)),
+                new ExtractorAndNorm(new FSTBillionNumberTagger(config), new FSTBillionNumberVerbalizer(config)),
 
-                new ExtractorAndNorm(new RomanNumberExtractor(config), new RomanNumberNormalizer(config)),
+                new ExtractorAndNorm(new RomanNumberTagger(config), new RomanNumberVerbalizer(config)),
 
-                new ExtractorAndNorm(new CharacterLexiconExtractor(config), new CharacterLexiconNormalizer(config)),
-                new ExtractorAndNorm(new AbbreviationExtractor(config), new AbbreviationNormalizer(config)),
+                new ExtractorAndNorm(new CharacterLexiconTagger(config), new CharacterLexiconVerbalizer(config)),
+                new ExtractorAndNorm(new AbbreviationTagger(config), new AbbreviationVerbalizer(config)),
 
-                new ExtractorAndNorm(new NumberPunctuationExtractor(config), new NumberPunctuationNormalizer(config)),
-                new ExtractorAndNorm(new TimeExtractor(config), new TimeNormalizer(config)),
-                new ExtractorAndNorm(new SqrtCalculationExtractor(config), new SqrtCalculationNormalizer(config)),
-                new ExtractorAndNorm(new SimpleCalculationExtractor(config), new SimpleCalculationNormalizer(config)),
+                new ExtractorAndNorm(new NumberPunctuationTagger(config), new NumberPunctuationVerbalizer(config)),
+                new ExtractorAndNorm(new TimeTagger(config), new TimeVerbalizer(config)),
+                new ExtractorAndNorm(new SqrtCalculationTagger(config), new SqrtCalculationVerbalizer(config)),
+                new ExtractorAndNorm(new SimpleCalculationTagger(config), new SimpleCalculationVerbalizer(config)),
 
-                new ExtractorAndNorm(new SegmentExtractor(config), new SegmentNormalizer(config)),
-                new ExtractorAndNorm(new UnitExtractor(config), new UnitNormalizer(config)),
-                new ExtractorAndNorm(new WebsiteExtractor(config), new WebNormalizer(config))
+                new ExtractorAndNorm(new SegmentTagger(config), new SegmentVerbalizer(config)),
+                new ExtractorAndNorm(new UnitTagger(config), new UnitVerbalizer(config)),
+                new ExtractorAndNorm(new WebsiteTagger(config), new WebVerbalizer(config))
 
         };
     }

@@ -1,6 +1,5 @@
 package VinSTTNorm.asrnormalizer;
 
-import VinSTTNorm.asrnormalizer.config.normalizerconfig.VinFastVoiceControlNormalizerConfig;
 import VinSTTNorm.asrnormalizer.datetime.TimeEntityRegexEntity;
 import VinSTTNorm.asrnormalizer.normalizer.BaseNormalizer;
 import VinSTTNorm.asrnormalizer.numerical.*;
@@ -12,7 +11,7 @@ import VinSTTNorm.asrnormalizer.vassistant.VinFastAirConditionerNumberEntity;
 import VinSTTNorm.speech.asr.INormalizer;
 
 import VinSTTNormV2.config.OfflineConfig;
-import VinSTTNormV2.config.normalizerconfig.NormalizerConfig;
+import VinSTTNormV2.config.NormalizerConfig;
 import org.json.JSONObject;
 
 /**

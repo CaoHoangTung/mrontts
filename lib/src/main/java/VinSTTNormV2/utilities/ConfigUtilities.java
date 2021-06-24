@@ -1,6 +1,5 @@
 package VinSTTNormV2.utilities;
 
-import VinSTTNormV2.config.RegexConfig;
 import org.json.JSONArray;
 import org.json.JSONObject;
 

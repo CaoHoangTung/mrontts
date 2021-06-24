@@ -5,6 +5,12 @@
       "postfix": "(?=([0-9]|([A-Z]+[0-9])))",
       "pattern": "##$number_punctuation.dict$##",
       "group": 0
+    },
+    {
+      "prefix": "(?<=( ))",
+      "postfix": "(?=([0-9]))",
+      "pattern": "cộng ",
+      "group": 0
     }
   ],
   "dict": {
